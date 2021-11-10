@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Elite Carz | Car Shop Niche React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is deployed on Firebase. [Live website link](https://elite-carz.web.app/).
 
-## Available Scripts
+## About This Project
 
-In the project directory, you can run:
+Here is a brief about this project: 
+- Lightening fast smooth experience with [ReactJS](https://reactjs.org/)
+- Dynamic server side on Heroku
+- Admin Dashboard to manage products, orders, users
+- Multiple authentication system with [Firebase](https://firebase.google.com/)
+- Organized, well-commented codes
+- Clean, cool and elegant design
+- Niche website (single product category selling website)
 
-### `yarn start`
+### `built with`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project is built with ReactJS.\
+Server side is on Heroku.\
+[Tailwind CSS][https://tailwindcss.com/] is used for the styles.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `purpose`
 
-### `yarn test`
+This site is a Niche website (single product category selling website).\
+So it can be used to sell any single category product.\
+This demo is about a car shop.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `data`
 
-### `yarn build`
+Data used from Dynamic backend server on [Heroku](#).\
+For example, here is the [blogs link](#) for this project.\
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### `icons`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Various icons have been used for this project.\
+Icons are collected from [this](https://react-icons.github.io/react-icons/) awesome icon library.
