@@ -22,9 +22,7 @@ Server side is hosted on Heroku.
 
 ### `purpose`
 
-This site is a Niche website (single product category selling website).\
-So it can be used to sell any single category product.\
-This demo is about a car shop.
+This site is a Niche website (single product category selling website). So it can be used to sell any single category product. This demo is about a car shop.
 
 ### `data`
 
