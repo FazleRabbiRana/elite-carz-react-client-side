@@ -1,13 +1,85 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Saira+Condensed:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --clr-primary: hsl(47, 100%, 51%);
+    --clr-primary-light: hsl(46, 100%, 63%);
+    --clr-primary-dark: hsl(45, 100%, 50%);
+    --clr-secondary: hsl(17, 100%, 51%);
+    --clr-secondary-light: hsl(15, 100%, 60%);
+    --clr-secondary-dark: hsl(17, 99%, 48%);
+    --clr-dark-gray: #23292e;
+    /* --clr-secondary: hsl(227, 100%, 51%);
+    --clr-secondary-light: hsl(233, 100%, 64%);
+    --clr-secondary-dark: hsl(228, 100%, 48%); */
+    --font-body: 'Open Sans', 'ui-sans-serif', 'sans-serif', 'system-ui';
+    --font-title: 'Saira Condensed', 'ui-sans-serif', 'sans-serif', 'system-ui';
+  }
+
+  *::selection {
+    /* background-color: #fbe122; */
+    background-color: var(--clr-primary-light);
+    color: #121212;
+  }
+
+  body {
+    @apply text-true-gray-500 font-my-body overflow-x-hidden;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-my-title font-medium text-true-gray-800;
+  }
+
+  .btn-regular {
+    @apply inline-block cursor-pointer text-center uppercase py-2 px-4 font-bold text-xs leading-none text-white bg-my-secondary duration-300 hover:bg-my-secondary-dark;
+  }
+
+  .mobile-menu-toggler {
+    @apply lg:hidden inline-block cursor-pointer h-full w-14 md:w-16 shadow bg-my-secondary duration-300 hover:bg-my-secondary-dark text-white absolute top-0 right-0 z-20;
+  }
+
+  .main-menu-wrapper {
+    @apply bg-gray-800 lg:bg-transparent text-white lg:text-gray-500 shadow-my-x lg:shadow-none px-4 py-8 lg:p-0 h-screen lg:h-auto w-60 lg:w-auto fixed lg:static top-0 left-0 z-40 lg:z-30 transform lg:transform-none duration-300 -translate-x-full;
+  }
+
+  .main-menu {
+    @apply space-y-4 lg:space-y-0 lg:space-x-12 lg:flex items-center justify-end;
+  }
+
+  .nav-link {
+    @apply inline-block uppercase font-bold lg:text-my-sm tracking-wider duration-150 transform hover:translate-x-4 lg:hover:translate-x-0 lg:hover:text-my-primary;
+  }
+
+  .footer-text {
+    @apply text-gray-300 text-my-sm leading-normal;
+  }
+
+  .footer-link {
+    @apply inline-block mb-2 hover:text-my-primary;
+  }
+
+  input[readonly] {
+    @apply opacity-60 focus:outline-none;
+  }
+  
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /* color: #ffc803; */
+  color: hsl(46, 100%, 63%);
+  color: hsl(47, 100%, 51%);
+  color: hsl(45, 100%, 50%);
+  /* color: hsl(42, 100%, 50%); */
+  background-color: hsl(15, 100%, 60%);
+  background-color: hsl(17, 100%, 51%);
+  background-color: hsl(17, 99%, 48%);
+  border-color: hsl(233, 100%, 64%);
+  border-color: hsl(227, 100%, 51%);
+  border-color: hsl(228, 100%, 48%);
 }
