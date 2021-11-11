@@ -1,0 +1,16 @@
+.home-banner-slider .slick-dots {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.slick-dots li button:before {
+	font-size: 12px;
+	color: #ddd;
+	opacity: 1;
+}
+
+.slick-dots li.slick-active button:before {
+	color: var(--clr-primary);
+}
