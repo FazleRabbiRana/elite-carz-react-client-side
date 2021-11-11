@@ -10,9 +10,9 @@
     --clr-primary: hsl(47, 100%, 51%);
     --clr-primary-light: hsl(46, 100%, 63%);
     --clr-primary-dark: hsl(45, 100%, 50%);
-    --clr-secondary: hsl(17, 100%, 51%);
-    --clr-secondary-light: hsl(15, 100%, 60%);
-    --clr-secondary-dark: hsl(17, 99%, 48%);
+    --clr-secondary: hsl(1, 79%, 66%);
+    --clr-secondary-light: hsl(2, 85%, 76%);
+    --clr-secondary-dark: hsl(1, 91%, 60%);
     --clr-dark-gray: #23292e;
     /* --clr-secondary: hsl(227, 100%, 51%);
     --clr-secondary-light: hsl(233, 100%, 64%);
@@ -33,7 +33,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-my-title font-medium text-true-gray-800;
+    @apply font-my-title tracking-my-tiny font-medium text-true-gray-800;
   }
 
   .btn-regular {
@@ -72,13 +72,17 @@
 
 code {
   /* color: #ffc803; */
+  /* color: #ffc905; */
   color: hsl(46, 100%, 63%);
   color: hsl(47, 100%, 51%);
   color: hsl(45, 100%, 50%);
   /* color: hsl(42, 100%, 50%); */
-  background-color: hsl(15, 100%, 60%);
+  background-color: hsl(2, 85%, 76%);
+  background-color: hsl(1, 79%, 66%);
+  background-color: hsl(1, 91%, 60%);
+  /* background-color: hsl(15, 100%, 60%);
   background-color: hsl(17, 100%, 51%);
-  background-color: hsl(17, 99%, 48%);
+  background-color: hsl(17, 99%, 48%); */
   border-color: hsl(233, 100%, 64%);
   border-color: hsl(227, 100%, 51%);
   border-color: hsl(228, 100%, 48%);

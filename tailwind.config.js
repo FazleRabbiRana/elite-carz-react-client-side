@@ -34,7 +34,7 @@ module.exports = {
         'half': '50%',
       },
       letterSpacing: {
-        'tiny': '1px',
+        'my-tiny': '1px',
       },
       fontSize: {
         'my-sm': ['13px', {
