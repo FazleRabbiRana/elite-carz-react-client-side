@@ -18,6 +18,11 @@ const MainMenu = () => {
 					All Products
 				</NavLink>
 			</li>
+			<li>
+				<NavLink to="/all-blogs" activeStyle={navLinkActiveStyle} className="hover:text-my-primary-dark">
+					All Blogs
+				</NavLink>
+			</li>
 		</ul>
 	);
 };

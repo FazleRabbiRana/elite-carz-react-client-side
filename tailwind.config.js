@@ -4,10 +4,10 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-		container: {
-      center: true,
-			padding: '1rem',
-    },
+		// container: {
+    //   center: true,
+		// 	padding: '1rem',
+    // },
     extend: {
 			colors: {
 				transparent: 'transparent',
@@ -46,6 +46,7 @@ module.exports = {
       },
       boxShadow: {
         'my-x': '0 4px 20px 0px rgba(0, 0, 0, 0.5)',
+        'my-y-heavy': '0 6px 13px 6px rgba(0, 0, 0, 1)',
       },
       minHeight: {
         'vh-50': '50vh',
@@ -69,5 +70,33 @@ module.exports = {
       visibility: ['hover', 'focus', 'group-hover', 'group-focus'],
 		},
   },
-  plugins: [],
+  corePlugins: {
+    container: false
+  },
+  plugins: [
+		function ({ addComponents }) {
+      addComponents({
+        '.container': {
+					width: '100%',
+          maxWidth: '100%',
+          paddingLeft: '1rem',
+          paddingRight: '1rem',
+          marginLeft: 'auto',
+          marginRight: 'auto',
+          '@screen sm': {
+            maxWidth: '720px',
+          },
+          '@screen md': {
+            maxWidth: '980px',
+          },
+          '@screen lg': {
+            maxWidth: '1200px',
+          },
+          '@screen xl': {
+            maxWidth: '1400px',
+          },
+        },
+      })
+    }
+	],
 }

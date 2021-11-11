@@ -6,9 +6,13 @@ const AllProducts = () => {
 	return (
 		<>
 			<HeaderNavbar />
-			<section id="all_products">
-				All Products page
-			</section>
+			<main id="all_products_page" className="all-products-page pt-16 md:pt-20">
+				<section id="all_products" className="py-8 lg:-py-12">
+					<div className="container">
+						all products page
+					</div>
+				</section>
+			</main>
 			<Footer />
 		</>
 	);

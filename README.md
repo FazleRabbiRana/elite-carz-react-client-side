@@ -26,8 +26,8 @@ This site is a Niche website (single product category selling website). So it ca
 
 ### `data`
 
-Data used from Dynamic backend server on [Heroku](#).\
-For example, here is the [blogs link](#) for this project.
+Data used from Dynamic backend server on [Heroku](https://sheltered-caverns-44637.herokuapp.com/).\
+For example, here is the [blogs link](https://sheltered-caverns-44637.herokuapp.com/blogs) for this project.
 
 ### `icons`
 

@@ -6,7 +6,7 @@ import MobileMenu from '../MobileMenu/MobileMenu';
 
 const HeaderNavbar = () => {
 	return (
-		<header id="header_main" className="navbar h-16 md:h-20 py-1 flex items-center absolute top-0 left-0 w-full z-30 bg-white">
+		<header id="header_main" className="navbar h-16 md:h-20 py-1 flex items-center absolute top-0 left-0 w-full z-30 bg-white shadow">
 			<div className="container flex justify-between relative">
 				<div className="logo-wrapper flex-shrink-0 w-28 md:w-36">
 					<Link to="/home">

@@ -8,6 +8,7 @@ import banner2 from '../../../images/banner/banner-bg-2-1.jpg';
 import { Link } from 'react-router-dom';
 
 const Banner = () => {
+	// banner slider setting
 	const settings = {
 		dots: true,
 		arrows: false,
@@ -27,8 +28,8 @@ const Banner = () => {
 			<Slider {...settings} className="home-banner-slider">
 				<div className="single-slide h-screen pt-16 md:pt-20">
 					<div style={{backgroundImage: `url(${banner1})`}} className="h-full bg-no-repeat bg-cover bg-center flex items-center">
-						<div className="container py-8 mb-12 md:w-3/5 lg:w-1/2 md:ml-0 md:text-center font-my-title">
-							<div className="inline-block text-left">
+						<div className="container py-8 mb-12 font-my-title">
+							<div className="inline-block lg:pl-28 2xl:pl-60 text-left">
 								<p className="mb-2 text-blue-400 text-2xl tracking-wider">Best Deal {new Date().getFullYear()}</p>
 								<h3 className="text-white uppercase text-2xl md:text-3xl my-1">Elegant-Decorative</h3>
 								<h2 className="text-white uppercase font-bold text-4xl md:text-6xl">
@@ -44,8 +45,8 @@ const Banner = () => {
 				</div>
 				<div className="single-slide h-screen pt-16 md:pt-20">
 					<div style={{backgroundImage: `url(${banner2})`}} className="h-full bg-no-repeat bg-cover bg-center flex items-center">
-						<div className="container py-8 mb-12 md:w-3/5 lg:w-1/2 md:ml-0 md:text-center font-my-title">
-							<div className="inline-block text-left">
+						<div className="container py-8 mb-12 font-my-title">
+							<div className="inline-block lg:pl-28 2xl:pl-60 text-left">
 								<p className="mb-2 text-blue-400 text-2xl tracking-wider">Your Best Choice</p>
 								<h2 className="text-white uppercase font-bold text-4xl md:text-6xl">
 									The <span className="text-my-primary">Elite Carz</span>
