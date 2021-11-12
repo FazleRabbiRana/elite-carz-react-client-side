@@ -4,6 +4,7 @@ import useAuthContexts from '../../../../hooks/useAuthContexts';
 import logo from '../../../../logo.svg';
 import MainMenu from '../MainMenu/MainMenu';
 import MobileMenu from '../MobileMenu/MobileMenu';
+import { RiLock2Line } from 'react-icons/ri';
 
 const HeaderNavbar = () => {
 	const { user, logOut } = useAuthContexts();
@@ -31,6 +32,7 @@ const HeaderNavbar = () => {
 							activeStyle={navLinkActiveStyle}
 							className="uppercase font-semibold text-base text-my-dark-gray hover:text-my-primary"
 						>
+							<RiLock2Line className="mx-auto text-my-primary" />
 							Login
 						</NavLink>
 					) : (

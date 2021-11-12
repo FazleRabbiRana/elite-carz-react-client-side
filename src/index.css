@@ -14,6 +14,7 @@
     --clr-secondary-light: hsl(2, 85%, 76%);
     --clr-secondary-dark: hsl(1, 91%, 60%);
     --clr-dark-gray: #23292e;
+    --clr-yellow-cream: #f8f4d9;
     /* --clr-secondary: hsl(227, 100%, 51%);
     --clr-secondary-light: hsl(233, 100%, 64%);
     --clr-secondary-dark: hsl(228, 100%, 48%); */
@@ -37,16 +38,8 @@
   }
 
   .btn-regular {
-    @apply inline-block cursor-pointer text-center uppercase py-3 px-6 font-my-title font-medium tracking-wide leading-none text-black bg-my-primary duration-300 hover:bg-my-primary-dark;
+    @apply inline-block cursor-pointer text-center uppercase py-3 px-6 font-my-title font-medium tracking-wide leading-none text-black bg-my-primary duration-300 hover:bg-my-primary-light;
   }
-
-  /* .main-menu {
-    @apply space-y-4 lg:space-y-0 lg:space-x-12 lg:flex items-center justify-end;
-  } */
-
-  /* .nav-link {
-    @apply inline-block uppercase font-bold lg:text-my-sm tracking-wider duration-150 transform hover:translate-x-4 lg:hover:translate-x-0 lg:hover:text-my-primary;
-  } */
 
   .footer-text {
     @apply text-gray-300 text-my-sm leading-normal;

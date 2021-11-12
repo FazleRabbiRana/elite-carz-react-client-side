@@ -14,6 +14,7 @@ module.exports = {
 				current: 'currentColor',
 				'true-gray': colors.trueGray,
 				'my-dark-gray': 'var(--clr-dark-gray)',
+				'my-yellow-cream': 'var(--clr-yellow-cream)',
         'my-primary': {
           light: 'var(--clr-primary-light)',
           DEFAULT: 'var(--clr-primary)',

@@ -8,6 +8,7 @@ import AllProducts from './Pages/AllProducts/AllProducts';
 import AllBlogs from './Pages/AllBlogs/AllBlogs';
 import BlogDetail from './Pages/BlogDetail/BlogDetail';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
+import ProductDetail from './Pages/ProductDetail/ProductDetail';
 
 function App() {
   return (
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/all-products">
             <AllProducts />
+          </Route>
+          <Route path="/product/:productId">
+            <ProductDetail />
           </Route>
           <Route path="/all-blogs">
             <AllBlogs />
