@@ -14,7 +14,7 @@ const Reviews = () => {
 	// load all reviews
 	useEffect(() => {
 		axios
-			.get('http://localhost:5000/reviews')
+			.get('https://sheltered-caverns-44637.herokuapp.com/reviews')
 			.then(res => {
 				console.log(res.data);
 				setReviews(res.data);
@@ -40,12 +40,17 @@ const Reviews = () => {
 
 	return (
 		<section id="home_reviews" className="relative">
-			<div style={{backgroundImage: `url(${reviewBg})`}} className="bg-no-repeat bg-cover bg-center bg-gray-800 bg-opacity-70 bg-blend-overlay pt-16 pb-14 md:pb-18">
+			<div
+				style={{ backgroundImage: `url(${reviewBg})` }}
+				className="bg-no-repeat bg-cover bg-center bg-gray-800 bg-opacity-70 bg-blend-overlay pt-16 pb-14 md:pb-18"
+			>
 				<div className="container max-w-3xl text-center">
-				<div className="text-center mb-12">
-					<p className="uppercase font-medium text-white font-my-title text-sm tracking-widest mb-2 md:mb-3">Clients Reviews</p>
-					<h2 className="text-my-primary text-4xl">What They Say</h2>
-				</div>
+					<div className="text-center mb-12">
+						<p className="uppercase font-medium text-white font-my-title text-sm tracking-widest mb-2 md:mb-3">
+							Clients Reviews
+						</p>
+						<h2 className="text-my-primary text-4xl">What They Say</h2>
+					</div>
 					<Slider {...settings} className="home-reviews-slider pb-24">
 						{reviews.map(review => (
 							<div key={review._id} className="single-slide">
@@ -69,7 +74,10 @@ const Reviews = () => {
 									</div>
 								</div>
 								<h3 className="mt-2 text-white">
-									<span className="inline-block text-my-primary-dark text-2xl">{review?.userName}</span>, &nbsp;
+									<span className="inline-block text-my-primary-dark text-2xl">
+										{review?.userName}
+									</span>
+									, &nbsp;
 									{review?.location}
 								</h3>
 							</div>
@@ -78,7 +86,11 @@ const Reviews = () => {
 				</div>
 			</div>
 			<div className="text-center">
-				<img src={car} alt="Red elegant car" className="mx-auto max-w-clear w-3/4 md:w-1/2 lg:w-auto -mt-12" />
+				<img
+					src={car}
+					alt="Red elegant car"
+					className="mx-auto max-w-clear w-3/4 md:w-1/2 lg:w-auto -mt-12"
+				/>
 			</div>
 		</section>
 	);
