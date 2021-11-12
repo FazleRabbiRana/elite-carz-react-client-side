@@ -25,7 +25,7 @@ const HeaderNavbar = () => {
 						<img src={logo} alt="Elite Carz logo" className="w-full" />
 					</Link>
 				</div>
-				<div className="flex-shrink-0 md:ml-12 h-100 border-l border-r px-2 md:px-4 text-center flex flex-col justify-center font-my-title">
+				<div className="flex-shrink-0 md:ml-12 h-100 border-l border-r px-2 md:px-3 text-center flex flex-col justify-center font-my-title">
 					{!user.email ? (
 						<NavLink
 							to="/login"
@@ -38,7 +38,7 @@ const HeaderNavbar = () => {
 					) : (
 						<div>
 							<p className="normal-case text-true-gray-500 text-sm w-16 truncate">
-								Fazle Rabbi Rana
+								{user?.displayName}
 							</p>
 							<button
 								className="uppercase font-semibold text-base leading-none text-my-dark-gray hover:text-my-primary"

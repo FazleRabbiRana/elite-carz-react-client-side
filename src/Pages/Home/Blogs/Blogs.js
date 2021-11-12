@@ -12,7 +12,7 @@ const Blogs = () => {
 		axios
 			.get('https://sheltered-caverns-44637.herokuapp.com/blogs')
 			.then(res => {
-				console.log(res.data);
+				// console.log(res.data);
 				setBlogs(res.data);
 			})
 			.catch(error => {

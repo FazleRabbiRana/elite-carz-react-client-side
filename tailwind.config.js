@@ -4,10 +4,17 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
-		// container: {
-    //   center: true,
-		// 	padding: '1rem',
-    // },
+		screens: {
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1400px',
+    },
+		container: {
+      center: true,
+			padding: '1rem',
+    },
     extend: {
 			colors: {
 				transparent: 'transparent',
@@ -71,33 +78,33 @@ module.exports = {
       visibility: ['hover', 'focus', 'group-hover', 'group-focus'],
 		},
   },
-  corePlugins: {
-    container: false
-  },
+  // corePlugins: {
+  //   container: false
+  // },
   plugins: [
-		function ({ addComponents }) {
-      addComponents({
-        '.container': {
-					width: '100%',
-          maxWidth: '100%',
-          paddingLeft: '1rem',
-          paddingRight: '1rem',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          '@screen sm': {
-            maxWidth: '720px',
-          },
-          '@screen md': {
-            maxWidth: '980px',
-          },
-          '@screen lg': {
-            maxWidth: '1200px',
-          },
-          '@screen xl': {
-            maxWidth: '1400px',
-          },
-        },
-      })
-    }
+		// function ({ addComponents }) {
+    //   addComponents({
+    //     '.container': {
+		// 			width: '100%',
+    //       maxWidth: '100%',
+    //       paddingLeft: '1rem',
+    //       paddingRight: '1rem',
+    //       marginLeft: 'auto',
+    //       marginRight: 'auto',
+    //       '@screen sm': {
+    //         maxWidth: '720px',
+    //       },
+    //       '@screen md': {
+    //         maxWidth: '980px',
+    //       },
+    //       '@screen lg': {
+    //         maxWidth: '1200px',
+    //       },
+    //       '@screen xl': {
+    //         maxWidth: '1400px',
+    //       },
+    //     },
+    //   })
+    // }
 	],
 }

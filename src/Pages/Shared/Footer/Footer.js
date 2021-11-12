@@ -11,7 +11,7 @@ const Footer = () => {
 				<div className="contact-info">
 					<h4 className="text-white uppercase text-xl mb-3 md:mb-5">Showroom</h4>
 					<div>
-						<address>
+						<address className="not-italic">
 							Bamonpara, 38 Hirimdia Road,<br />Bheramara-7040, Kushtia, Bangladesh.
 						</address>
 					</div>

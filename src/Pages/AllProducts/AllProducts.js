@@ -17,7 +17,7 @@ const AllProducts = () => {
 		axios
 			.get(url)
 			.then(res => {
-				console.log(res.data);
+				// console.log(res.data);
 				setProducts(res.data);
 			})
 			.catch(error => {

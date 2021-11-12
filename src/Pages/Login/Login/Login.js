@@ -1,21 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../../../logo.svg';
+import Footer from '../../Shared/Footer/Footer';
+import HeaderNavbar from '../../Shared/Header/HeaderNavbar/HeaderNavbar';
+import LoginForm from '../LoginForm/LoginForm';
+import RegisterForm from '../RegisterForm/RegisterForm';
 
 const Login = () => {
 	return (
-		<main id="login_page" className="login-page py-8 lg:py-12">
-			<header>
-				<div className="logo-wrapper w-28 md:w-36 mx-auto">
-					<Link to="/home" title="Elite Carz Home">
-						<img src={logo} alt="Elite Carz logo" className="w-full" />
-					</Link>
-				</div>
-			</header>
-			<section className="py-8 lg:py-12">
-				<div className="container">This is Login page</div>
-			</section>
-		</main>
+		<>
+			<HeaderNavbar />
+			<main id="login_page" className="login-page pt-16 md:pt-20">
+				<section className="py-8 lg:py-12 relative">
+					<div className="px-4 md:flex lg:justify-evenly space-y-8 md:space-y-0 md:space-x-6 lg:space-x-12 xl:max-w-screen-xl xl:mx-auto">
+						<div className="md:w-1/2 lg:max-w-sm">
+							<LoginForm />
+						</div>
+						<div className="flex-shrink-0 h-10 w-10 rounded-full bg-my-primary text-true-gray-800 font-semibold flex items-center justify-center text-center mx-auto">Or</div>
+						<div className="md:w-1/2 lg:max-w-sm">
+							<RegisterForm />
+						</div>
+					</div>
+				</section>
+			</main>
+			<Footer />
+		</>
 	);
 };
 

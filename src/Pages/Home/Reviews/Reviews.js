@@ -16,7 +16,7 @@ const Reviews = () => {
 		axios
 			.get('https://sheltered-caverns-44637.herokuapp.com/reviews')
 			.then(res => {
-				console.log(res.data);
+				// console.log(res.data);
 				setReviews(res.data);
 			})
 			.catch(error => {

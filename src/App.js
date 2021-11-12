@@ -9,6 +9,7 @@ import AllBlogs from './Pages/AllBlogs/AllBlogs';
 import BlogDetail from './Pages/BlogDetail/BlogDetail';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import ProductDetail from './Pages/ProductDetail/ProductDetail';
+import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -24,9 +25,9 @@ function App() {
           <Route path="/all-products">
             <AllProducts />
           </Route>
-          <Route path="/product/:productId">
+          <PrivateRoute path="/product/:productId">
             <ProductDetail />
-          </Route>
+          </PrivateRoute>
           <Route path="/all-blogs">
             <AllBlogs />
           </Route>
@@ -36,9 +37,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
-          <Route path="/dashboard">
+          <PrivateRoute path="/dashboard">
             <Dashboard />
-          </Route>
+          </PrivateRoute>
           <Route path="*">
             <NotFound />
           </Route>
