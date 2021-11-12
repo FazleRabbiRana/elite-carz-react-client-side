@@ -7,6 +7,7 @@ import Login from './Pages/Login/Login/Login';
 import AllProducts from './Pages/AllProducts/AllProducts';
 import AllBlogs from './Pages/AllBlogs/AllBlogs';
 import BlogDetail from './Pages/BlogDetail/BlogDetail';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -30,6 +31,9 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/dashboard">
+            <Dashboard />
           </Route>
           <Route path="*">
             <NotFound />

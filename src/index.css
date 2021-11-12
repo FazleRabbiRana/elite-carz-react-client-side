@@ -9,7 +9,7 @@
   :root {
     --clr-primary: hsl(47, 100%, 51%);
     --clr-primary-light: hsl(46, 100%, 63%);
-    --clr-primary-dark: hsl(45, 100%, 50%);
+    --clr-primary-dark: hsl(45, 100%, 42%);
     --clr-secondary: hsl(1, 79%, 66%);
     --clr-secondary-light: hsl(2, 85%, 76%);
     --clr-secondary-dark: hsl(1, 91%, 60%);
