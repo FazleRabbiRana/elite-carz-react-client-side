@@ -10,6 +10,8 @@ import BlogDetail from './Pages/BlogDetail/BlogDetail';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import ProductDetail from './Pages/ProductDetail/ProductDetail/ProductDetail';
+import ScrollUpButton from "react-scroll-up-button";
+import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
 
 function App() {
   return (
@@ -44,6 +46,15 @@ function App() {
             <NotFound />
           </Route>
         </Switch>
+        <ScrollUpButton
+          ShowAtPosition={300}
+          AnimationDuration={700}
+          ContainerClassName="w-12 h-12 bg-red-400 bg-opacity-50 text-white text-2xl flex items-center justify-center text-center fixed bottom-5 cursor-pointer duration-500 ease-in-out"
+          style={{right: '-120%', opacity: 0, zIndex: 999}}
+          ToggledStyle={{right: '20px', opacity: 1}}
+        >
+          <HiOutlineChevronDoubleUp />
+        </ScrollUpButton>
       </div>
     </AuthProvider>
   );

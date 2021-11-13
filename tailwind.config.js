@@ -55,7 +55,7 @@ module.exports = {
       boxShadow: {
         'my-x': '0 4px 20px 0px rgba(0, 0, 0, 0.5)',
         'my-y-heavy': '0 20px 10px 0px rgba(0, 0, 0, 1)',
-        'my-around': '0 2px 10px 0px rgba(0, 0, 0, 0.3)',
+        'my-around': '0 2px 15px 0px rgba(0, 0, 0, 0.2)',
       },
       minHeight: {
         'vh-50': '50vh',

@@ -28,7 +28,7 @@ const PlaceOrder = ({ product }) => {
 	};
 
 	return (
-		<div className="place-order bg-white p-4">
+		<div className="place-order bg-white shadow-my-around p-4">
 			<h3 className="text-2xl"><span className="font-semibold">Order</span> This Car</h3>
 			<hr className="block leading-none w-14 border-my-primary my-4" />
 			<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4">
