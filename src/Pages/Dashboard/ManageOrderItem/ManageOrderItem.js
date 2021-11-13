@@ -46,7 +46,7 @@ const ManageOrderItem = ({ order, orders, setOrders }) => {
 	};
 
 	return (
-		<div className="single-order-block bg-gray-100 group md:flex md:flex-nowrap">
+		<div className="single-order-block bg-gray-100 group md:flex md:flex-nowrap lg:max-w-xl">
 			<div className="image md:flex-shrink-0 overflow-hidden md:w-32 lg:w-48 xl:w-56">
 				<img
 					src={image}
