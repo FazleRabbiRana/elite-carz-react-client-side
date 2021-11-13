@@ -40,6 +40,14 @@
     @apply inline-block cursor-pointer text-center uppercase py-3 px-6 font-my-title font-medium tracking-wide leading-none text-black bg-my-primary duration-300 hover:bg-my-primary-light;
   }
 
+  .navbar {
+    @apply h-16 md:h-20 py-1 bg-white shadow flex items-center absolute top-0 left-0 w-full z-30;
+  }
+
+  .dashboard-menu-link {
+    @apply py-2 px-1 xl:px-3 w-full flex flex-nowrap items-center font-my-title uppercase font-medium text-true-gray-800 hover:bg-my-primary;
+  }
+
   .footer-text {
     @apply text-gray-300 text-my-sm leading-normal;
   }

@@ -13,7 +13,7 @@ const LoginForm = () => {
 
 	// register form submit
 	const onSubmit = data => {
-		console.log(data);
+		// console.log(data);
 		loginWithEmail(data.loginEmail, data.loginPassword, location, history);
 	};
 
@@ -54,7 +54,7 @@ const LoginForm = () => {
 					{(errors.loginEmail ||
 						errors.loginPassword) && (
 						<p className="text-sm text-red-600 leading-loose">
-							Please Fill up the form properly.
+							Please fill up the form properly.
 						</p>
 					)}
 					{!user?.email && <input type="submit" className="btn-regular" value="Login" />}

@@ -15,10 +15,7 @@ const HeaderNavbar = () => {
 	}
 
 	return (
-		<header
-			id="header_main"
-			className="navbar h-16 md:h-20 py-1 flex items-center absolute top-0 left-0 w-full z-30 bg-white shadow"
-		>
+		<header id="header_main" className="navbar">
 			<div className="container flex justify-between relative">
 				<div className="logo-wrapper flex-shrink-0 w-28 md:w-36">
 					<Link to="/home">
@@ -37,7 +34,7 @@ const HeaderNavbar = () => {
 						</NavLink>
 					) : (
 						<div>
-							<p className="normal-case text-true-gray-500 text-sm w-16 truncate">
+							<p className="normal-case text-true-gray-500 text-sm w-20 truncate">
 								{user?.displayName}
 							</p>
 							<button

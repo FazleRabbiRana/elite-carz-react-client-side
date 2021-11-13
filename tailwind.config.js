@@ -71,6 +71,9 @@ module.exports = {
         'pos1': '1',
         'highest': '99999',
       },
+			scale: {
+				'my-80': '.8',
+			},
 			keyframes: {
 				myMoveUp: {
 					'from': { opacity: 0, transform: 'translateY(50px)' },

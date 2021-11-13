@@ -1,15 +1,15 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import useAuthContexts from '../../../hooks/useAuthContexts';
-import MyOrder from '../MyOrder/MyOrder';
+import ManageOrderItem from '../ManageOrderItem/ManageOrderItem';
 
-const MyOrders = () => {
+const ManageAllOrders = () => {
 	const [orders, setOrders] = useState([]);
 	const { user } = useAuthContexts();
 
 	// load all orders by email
 	useEffect(() => {
-		const url = `https://sheltered-caverns-44637.herokuapp.com/orders?email=${user.email}`;
+		const url = `https://sheltered-caverns-44637.herokuapp.com/orders`;
 		axios
 			.get(url)
 			.then(res => {
@@ -19,17 +19,14 @@ const MyOrders = () => {
 			.catch(error => {
 				console.log(error);
 			});
-	}, [user.email]);
+	}, []);
 
 	return (
-		<section id="my_orders" className="my-orders">
-			<h3 className="uppercase font-semibold text-lg lg:text-2xl leading-none lg:leading-none mb-6">My Orders</h3>
-			<div className="orders-wrapper flex flex-col space-y-4">
+		<section id="manage_all_orders" className="manage-all-orders">
+			<h3 className="uppercase font-semibold text-lg lg:text-2xl leading-none lg:leading-none mb-6">Manage All Orders</h3>
+			<div className="orders-wrapper grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 gap-y-10 sm:gap-x-4 md:gap-y-6">
 				{
-					orders.length < 1 && <p className="leading-none">You have no orders yet.</p>
-				}
-				{
-					orders.map(order => <MyOrder 
+					orders.map(order => <ManageOrderItem 
 						key={order._id}
 						order={order}
 						orders={orders}
@@ -41,4 +38,4 @@ const MyOrders = () => {
 	);
 };
 
-export default MyOrders;
+export default ManageAllOrders;

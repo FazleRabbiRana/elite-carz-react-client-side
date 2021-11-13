@@ -19,7 +19,7 @@ const RegisterForm = () => {
 
 	// register form submit
 	const onSubmit = data => {
-		console.log(data);
+		// console.log(data);
 		registerWithEmail(
 			data.displayName,
 			data.email,
@@ -45,7 +45,7 @@ const RegisterForm = () => {
 					</label>
 					<input
 						className="form-field"
-						placeholder="Abu Dujana"
+						placeholder="e.g. Abu Dujana"
 						{...register('displayName', { required: true })}
 					/>
 				</div>
@@ -57,7 +57,7 @@ const RegisterForm = () => {
 					<input
 						type="email"
 						className="form-field"
-						placeholder="email@email.com"
+						placeholder="e.g. email@email.com"
 						{...register('email', { required: true })}
 					/>
 				</div>
@@ -98,7 +98,7 @@ const RegisterForm = () => {
 						</span>
 					)}
 				</div>
-				<div>
+				{/* <div>
 					<label className="block mb-1">Gender</label>
 					<select
 						className="form-field"
@@ -107,14 +107,14 @@ const RegisterForm = () => {
 						<option value="male">Male</option>
 						<option value="female">Female</option>
 					</select>
-				</div>
+				</div> */}
 				<div>
 					{(errors.displayName ||
 						errors.email ||
 						errors.regPassword ||
 						errors.confirmPassword) && (
 						<p className="text-sm text-red-600 leading-loose">
-							Please Fill up the form properly.
+							Please fill up the form properly.
 						</p>
 					)}
 					{(!user?.email && !isLoading) && <input type="submit" className="btn-regular" value="Register" />}

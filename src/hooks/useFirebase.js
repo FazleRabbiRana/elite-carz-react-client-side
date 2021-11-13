@@ -29,7 +29,7 @@ const useFirebase = () => {
 		setIsLoading(true);
 		createUserWithEmailAndPassword(auth, email, password)
 			.then(result => {
-				console.log(result);
+				// console.log(result);
 				const newUser = { email, displayName: name };
 				setUser(newUser);
 				setAuthError('');
@@ -79,7 +79,7 @@ const useFirebase = () => {
 		signInWithPopup(auth, googleProvider)
 			.then(result => {
 				const user = result.user;
-				console.log(user);
+				// console.log(user);
 				setAuthError('');
 				// update user to database
 				saveUserToDatabase(user.email, user.displayName, 'PUT');

@@ -3,7 +3,7 @@ import Footer from '../../Shared/Footer/Footer';
 import HeaderNavbar from '../../Shared/Header/HeaderNavbar/HeaderNavbar';
 import Banner from '../Banner/Banner';
 import Blogs from '../Blogs/Blogs';
-import PopularBrands from '../PopularBrands/PopularBrands';
+// import PopularBrands from '../PopularBrands/PopularBrands';
 import Products from '../Products/Products';
 import Reviews from '../Reviews/Reviews';
 
@@ -15,7 +15,7 @@ const Home = () => {
 			<Products />
 			<Reviews />
 			<Blogs />
-			<PopularBrands />
+			{/* <PopularBrands /> */}
 			<Footer />
 		</>
 	);

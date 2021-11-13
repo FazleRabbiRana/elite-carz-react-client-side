@@ -58,7 +58,7 @@ const PlaceOrder = ({ product }) => {
 				</div>
 				<div>
 					<label className="block mb-1">
-						Pickup address{' '}
+						Shipping address{' '}
 						<RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
 					</label>
 					<textarea 
