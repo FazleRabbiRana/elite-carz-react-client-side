@@ -44,7 +44,7 @@ const RegisterForm = () => {
 						<RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
 					</label>
 					<input
-						className="w-full h-10 border border-gray-300 px-3 text-sm text-gray-700"
+						className="form-field"
 						placeholder="Abu Dujana"
 						{...register('displayName', { required: true })}
 					/>
@@ -56,7 +56,7 @@ const RegisterForm = () => {
 					</label>
 					<input
 						type="email"
-						className="w-full h-10 border border-gray-300 px-3 text-sm text-gray-700"
+						className="form-field"
 						placeholder="email@email.com"
 						{...register('email', { required: true })}
 					/>
@@ -68,7 +68,7 @@ const RegisterForm = () => {
 					</label>
 					<input
 						type="password"
-						className="w-full h-10 border border-gray-300 px-3 text-sm text-gray-700"
+						className="form-field"
 						placeholder="Min 6 characters"
 						{...register('regPassword', { required: true, minLength: 6 })}
 					/>
@@ -80,7 +80,7 @@ const RegisterForm = () => {
 					</label>
 					<input
 						type="password"
-						className="w-full h-10 border border-gray-300 px-3 text-sm text-gray-700"
+						className="form-field"
 						placeholder="Confirm password"
 						{...register('confirmPassword', {
 							required: true,
@@ -101,7 +101,7 @@ const RegisterForm = () => {
 				<div>
 					<label className="block mb-1">Gender</label>
 					<select
-						className="w-full h-10 border border-gray-300 px-3 text-sm text-gray-700"
+						className="form-field"
 						{...register('gender')}
 					>
 						<option value="male">Male</option>

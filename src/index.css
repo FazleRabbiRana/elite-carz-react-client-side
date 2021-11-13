@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Saira+Condensed:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;500;600;700&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 
   :root {
@@ -23,7 +23,6 @@
   }
 
   *::selection {
-    /* background-color: #fbe122; */
     background-color: var(--clr-primary-light);
     color: #121212;
   }
@@ -49,10 +48,13 @@
     @apply inline-block mb-2 hover:text-my-primary;
   }
 
-  input[readonly] {
-    @apply opacity-60 focus:outline-none;
+  .form-field {
+    @apply h-10 w-full border border-gray-300 px-3 py-1 text-sm text-gray-700;
   }
-  
+
+  /* input[readonly] {
+    @apply opacity-60 focus:outline-none;
+  } */
 }
 
 code {

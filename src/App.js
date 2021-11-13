@@ -8,8 +8,8 @@ import AllProducts from './Pages/AllProducts/AllProducts';
 import AllBlogs from './Pages/AllBlogs/AllBlogs';
 import BlogDetail from './Pages/BlogDetail/BlogDetail';
 import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
-import ProductDetail from './Pages/ProductDetail/ProductDetail';
 import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
+import ProductDetail from './Pages/ProductDetail/ProductDetail/ProductDetail';
 
 function App() {
   return (

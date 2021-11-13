@@ -34,7 +34,7 @@ const LoginForm = () => {
 					</label>
 					<input 
 						type="email"
-						className="w-full h-10 border border-gray-300 px-3 text-sm text-gray-700"
+						className="form-field"
 						placeholder="Your email address"
 						{...register('loginEmail', { required: true })} 
 					/>
@@ -45,7 +45,7 @@ const LoginForm = () => {
 					</label>
 					<input 
 						type="password"
-						className="w-full h-10 border border-gray-300 px-3 text-sm text-gray-700"
+						className="form-field"
 						placeholder="Your password"
 						{...register('loginPassword', { required: true })} 
 					/>
@@ -62,8 +62,8 @@ const LoginForm = () => {
 				</div>
 			</form>
 			<div className="status">
-				{user?.email && <h4 className="mt-3 text-green-600">Logged in successfully!</h4>}
-				{authError && <h4 className="mt-3 text-red-600">{authError}</h4>}
+				{user?.email && <h5 className="mt-3 text-green-600">Logged in successfully!</h5>}
+				{authError && <h5 className="mt-3 text-red-600">{authError}</h5>}
 			</div>
 			<div className="divider mt-5 mb-3 flex flex-nowrap items-center font-my-title uppercase font-semibold text-true-gray-800">
 				<hr className="flex-auto border-my-primary border-dashed" />

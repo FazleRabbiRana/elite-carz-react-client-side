@@ -1,3 +1,6 @@
+/**
+* Slick slider custom style
+*/
 .slick-dots {
 	position: absolute;
 	bottom: 30px;
@@ -13,4 +16,8 @@
 
 .slick-dots li.slick-active button:before {
 	color: var(--clr-primary);
+}
+
+.slick-active.slick-current {
+	z-index: 1;
 }

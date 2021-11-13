@@ -55,6 +55,7 @@ module.exports = {
       boxShadow: {
         'my-x': '0 4px 20px 0px rgba(0, 0, 0, 0.5)',
         'my-y-heavy': '0 20px 10px 0px rgba(0, 0, 0, 1)',
+        'my-around': '0 2px 10px 0px rgba(0, 0, 0, 0.3)',
       },
       minHeight: {
         'vh-50': '50vh',
@@ -69,7 +70,16 @@ module.exports = {
         'neg1': '-1',
         'pos1': '1',
         'highest': '99999',
-      }
+      },
+			keyframes: {
+				myMoveUp: {
+					'from': { opacity: 0, transform: 'translateY(50px)' },
+					'to': { opacity: 1, transform: 'translateY(0px)' },
+				}
+			},
+			animation: {
+				myMoveUp: 'myMoveUp var(--duration, 0.4s) var(--easing, ease-out) var(--fill, forwards) var(--delay, 0s)',
+			}
 		},
   },
   variants: {

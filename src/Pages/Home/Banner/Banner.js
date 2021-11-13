@@ -36,7 +36,7 @@ const Banner = () => {
 									The <span className="text-my-primary">Elite Carz</span>
 								</h2>
 								<p className="mt-2 text-white font-light text-2xl tracking-wide">True Elite Experience</p>
-								<div className="mt-8 md:mt-12">
+								<div className="mt-8 md:mt-12 animate-myMoveUp">
 									<Link to="/all-products" className="btn-regular">Explore more</Link>
 								</div>
 							</div>
