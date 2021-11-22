@@ -12,10 +12,15 @@ import PrivateRoute from './Pages/Login/PrivateRoute/PrivateRoute';
 import ProductDetail from './Pages/ProductDetail/ProductDetail/ProductDetail';
 import ScrollUpButton from "react-scroll-up-button";
 import { HiOutlineChevronDoubleUp } from 'react-icons/hi';
+import StartFromTop from './Pages/Shared/StartFromTop/StartFromTop';
+import Terms from './Pages/Terms/Terms';
+import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
+import Contact from './Pages/Contact/Contact';
 
 function App() {
   return (
     <AuthProvider>
+      <StartFromTop />
       <div className="App">
         <Switch>
           <Route exact path="/">
@@ -42,6 +47,15 @@ function App() {
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
+          <PrivateRoute path="/contact">
+            <Contact />
+          </PrivateRoute>
+          <Route path="/terms-conditions">
+            <Terms />
+          </Route>
+          <Route path="/privacy-policy">
+            <PrivacyPolicy />
+          </Route>
           <Route path="*">
             <NotFound />
           </Route>

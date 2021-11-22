@@ -81,7 +81,7 @@ const PlaceOrder = ({ product }) => {
     	</form>
 			{orderSuccess && (
 				<div className="mt-4 flex flex-nowrap space-x-6 font-my-title text-true-gray-800">
-					<Link to="/dashboard" className="underline hover:text-my-primary-dark">My Orders</Link>
+					<Link to="/dashboard" className="underline hover:text-my-primary-dark">Dashboard</Link>
 					<Link to="/all-products" className="underline hover:text-my-primary-dark">More Cars</Link>
 				</div>
 			)}

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 const ManageOrderItem = ({ order, orders, setOrders }) => {
 	const { name, image } = order?.orderedProduct;
-	const { register, handleSubmit, formState: { errors } } = useForm();
+	const { register, handleSubmit } = useForm();
 	const [success, setSuccess] = useState(false);
 	const [newStatus, setNewStatus] = useState('');
 
@@ -12,6 +12,9 @@ const ManageOrderItem = ({ order, orders, setOrders }) => {
 	const onSubmit = data => {
 		// console.log(data);
 		const changedStatus = data.status;
+		if (changedStatus === '') {
+			return;
+		}
 		const updatedOrder = {...order}
 		updatedOrder.status = changedStatus;
 		const url = `https://sheltered-caverns-44637.herokuapp.com/orders/${order._id}`;
@@ -63,11 +66,16 @@ const ManageOrderItem = ({ order, orders, setOrders }) => {
 				</div>
 				<div className="mt-3 md:mt-0 md:flex-shrink-0 text-center md:text-right">
 				<form onSubmit={handleSubmit(onSubmit)} className="flex flex-nowrap my-2 md:mt-0 md:mb-3">
-						<select className="form-field h-10 flex-grow" {...register('status')}>
+						<select 
+							className="form-field h-10 flex-grow" 
+							{...register('status', { required: true })}
+							defaultValue=""
+						>
+							<option value="" disabled hidden>Change Status</option>
 							<option value="Shipped">Shipped</option>
 							<option value="Pending">Pending</option>
 						</select>
-						<input type="submit" value="Change Status" className="flex-shrink-0 btn-regular text-sm px-4 py-1"
+						<input type="submit" value="Change" className="flex-shrink-0 btn-regular text-sm px-4 py-1"
 						/>
 					</form>
 					<button

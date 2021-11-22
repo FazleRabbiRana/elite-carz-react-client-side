@@ -24,21 +24,28 @@ const Footer = () => {
 				</div>
 				<div className="quick-links">
 					<h4 className="text-white uppercase text-xl mb-3 md:mb-5">Quick Links</h4>
-					<p>
-						<Link to="/home" className="footer-link">Home</Link>
-					</p>
-					<p>
+					<ul>
+						<li>
+							<Link to="/home" className="footer-link">Home</Link>
+						</li>
+						<li>
 						<Link to="/all-products" className="footer-link">All Products</Link>
-					</p>
+						</li>
+						<li>
+							<Link to="/contact" className="footer-link">Contact</Link>
+						</li>
+					</ul>
 				</div>
 				<div className="legal-info">
 					<h4 className="text-white uppercase text-xl mb-3 md:mb-5">Legal Info</h4>
-					<p>
-						<Link to="/terms-conditions" className="footer-link">Terms &amp; Conditions</Link>
-					</p>
-					<p>
-						<Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
-					</p>
+					<ul>
+						<li>
+							<Link to="/terms-conditions" className="footer-link">Terms &amp; Conditions</Link>
+						</li>
+						<li>
+							<Link to="/privacy-policy" className="footer-link">Privacy Policy</Link>
+						</li>
+					</ul>
 				</div>
 			</div>
 			<hr className="opacity-10" />

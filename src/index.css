@@ -9,15 +9,15 @@
   :root {
     --clr-primary: hsl(47, 100%, 51%);
     --clr-primary-light: hsl(46, 100%, 63%);
-    --clr-primary-dark: hsl(45, 100%, 42%);
-    --clr-secondary: hsl(1, 79%, 66%);
+    --clr-primary-dark: hsl(45, 100%, 47%);
+    /* --clr-secondary: hsl(1, 79%, 66%);
     --clr-secondary-light: hsl(2, 85%, 76%);
-    --clr-secondary-dark: hsl(1, 91%, 60%);
+    --clr-secondary-dark: hsl(1, 91%, 60%); */
+    --clr-secondary: hsl(227, 100%, 51%);
+    --clr-secondary-light: hsl(233, 100%, 64%);
+    --clr-secondary-dark: hsl(228, 100%, 48%);
     --clr-dark-gray: #23292e;
     --clr-yellow-cream: #f8f4d9;
-    /* --clr-secondary: hsl(227, 100%, 51%);
-    --clr-secondary-light: hsl(233, 100%, 64%);
-    --clr-secondary-dark: hsl(228, 100%, 48%); */
     --font-body: 'Open Sans', 'ui-sans-serif', 'sans-serif', 'system-ui';
     --font-title: 'Saira Condensed', 'ui-sans-serif', 'sans-serif', 'system-ui';
   }
@@ -59,13 +59,10 @@
   .form-field {
     @apply h-10 w-full border border-gray-300 px-3 py-1 text-sm text-gray-700;
   }
-
-  /* input[readonly] {
-    @apply opacity-60 focus:outline-none;
-  } */
 }
 
-code {
+/* test colors */
+code a b {
   /* color: #ffc803; */
   /* color: #ffc905; */
   color: hsl(46, 100%, 63%);

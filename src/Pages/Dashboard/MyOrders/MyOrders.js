@@ -26,9 +26,6 @@ const MyOrders = () => {
 			<h3 className="uppercase font-semibold text-lg lg:text-2xl leading-none lg:leading-none mb-6">My Orders</h3>
 			<div className="orders-wrapper flex flex-col space-y-4">
 				{
-					orders.length < 1 && <p className="leading-none">You have no orders yet.</p>
-				}
-				{
 					orders.map(order => <MyOrder 
 						key={order._id}
 						order={order}

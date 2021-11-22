@@ -4,6 +4,7 @@ import Footer from '../../Shared/Footer/Footer';
 import logo from '../../../logo.svg';
 import useAuthContexts from '../../../hooks/useAuthContexts';
 import {
+	RiDashboardFill,
 	RiShoppingCartFill,
 	RiMessage2Fill,
 	RiSecurePaymentFill,
@@ -22,6 +23,7 @@ import ManageProducts from '../ManageProducts/ManageProducts';
 import AddProduct from '../AddProduct/AddProduct';
 import MakeAdmin from '../MakeAdmin/MakeAdmin';
 import AdminRoute from '../../Login/AdminRoute/AdminRoute';
+import DashboardHome from '../DashboardHome/DashboardHome';
 
 const Dashboard = () => {
 	const { user, isAdmin, logOut } = useAuthContexts();
@@ -50,12 +52,39 @@ const Dashboard = () => {
 			<div className="dashboard-wrapper bg-my-yellow-cream min-h-vh-50 flex flex-nowrap space-x-2 md:space-x-4 xl:space-x-10 py-4 lg:py-8">
 				<div className="dashboard-sidebar flex-shrink-0 bg-white shadow-my-around py-4 lg:py-8 px-2 lg:px-4 xl:px-6">
 					<ul className="dashboard-menu flex flex-col -mt-2">
+						<li className="border-b">
+							<NavLink
+								to="/home"
+								title="Home"
+								activeStyle={linkActiveStyle}
+								className="dashboard-menu-link"
+							>
+								<span className="text-2xl">
+									<RiHome8Fill />
+								</span>
+								<span className="hidden md:block pl-3">Home</span>
+							</NavLink>
+						</li>
+						<li className="border-b">
+							<NavLink
+								exact
+								to={`${url}`}
+								title="Dashboard home"
+								activeStyle={linkActiveStyle}
+								className="dashboard-menu-link"
+							>
+								<span className="text-2xl">
+									<RiDashboardFill />
+								</span>
+								<span className="hidden md:block pl-3">Dashboard</span>
+							</NavLink>
+						</li>
 						{!isAdmin && (
 							<>
 								<li className="border-b">
 									<NavLink
 										exact
-										to={`${url}`}
+										to={`${url}/my-orders`}
 										title="My orders"
 										activeStyle={linkActiveStyle}
 										className="dashboard-menu-link"
@@ -154,19 +183,6 @@ const Dashboard = () => {
 								</li>
 							</>
 						)}
-						<li className="border-b">
-							<NavLink
-								to="/home"
-								title="Home"
-								activeStyle={linkActiveStyle}
-								className="dashboard-menu-link"
-							>
-								<span className="text-2xl">
-									<RiHome8Fill />
-								</span>
-								<span className="hidden md:block pl-3">Home</span>
-							</NavLink>
-						</li>
 						<li>
 							<button
 								onClick={logOut}
@@ -184,41 +200,12 @@ const Dashboard = () => {
 				<div className="dashboard-content flex-grow bg-white shadow-my-around py-4 lg:py-8 px-2 lg:px-4 xl:px-6">
 					<div className="lg:container m-0 lg:m-0 p-0 lg:p-0">
 						<Switch>
-							{/* {isAdmin ? (
-								<AdminRoute path={`${path}`}>
-									<ManageAllOrders />
-								</AdminRoute>
-							) : (
-								<Route exact path={`${path}`}>
-									<MyOrders />
-								</Route>
-							)} */}
-
-							{/* <Route exact path={`${path}`}>
-								<MyOrders />
+							<Route exact path={`${path}`}>
+								<DashboardHome />
 							</Route>
-							<Route path={`${path}/add-review`}>
-								<AddReview />
-							</Route>
-							<Route path={`${path}/pay`}>
-								<Pay />
-							</Route>
-							<AdminRoute path={`${path}/manage-all-orders`}>
-								<ManageAllOrders />
-							</AdminRoute>
-							<AdminRoute path={`${path}/manage-products`}>
-								<ManageProducts />
-							</AdminRoute>
-							<AdminRoute path={`${path}/add-product`}>
-								<AddProduct />
-							</AdminRoute>
-							<AdminRoute path={`${path}/make-admin`}>
-								<MakeAdmin />
-							</AdminRoute> */}
-
 							{!isAdmin && (
 								<>
-									<Route exact path={`${path}`}>
+									<Route exact path={`${path}/my-orders`}>
 										<MyOrders />
 									</Route>
 									<Route path={`${path}/add-review`}>

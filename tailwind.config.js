@@ -78,10 +78,15 @@ module.exports = {
 				myMoveUp: {
 					'from': { opacity: 0, transform: 'translateY(50px)' },
 					'to': { opacity: 1, transform: 'translateY(0px)' },
-				}
+				},
+				myHeartBeat: {
+					'0%, 28%, 70%': { transform: 'scale(1)' },
+					'14%, 42%': { transform: 'scale(1.3)' },
+				},
 			},
 			animation: {
-				myMoveUp: 'myMoveUp var(--duration, 0.4s) var(--easing, ease-out) var(--fill, forwards) var(--delay, 0s)',
+				myMoveUp: 'myMoveUp var(--duration, 0.5s) var(--easing, ease-in-out) var(--fill, forwards) var(--delay, 0s)',
+				myHeartBeat: 'myHeartBeat var(--duration, 1.3s) ease-in-out infinite 1s',
 			}
 		},
   },

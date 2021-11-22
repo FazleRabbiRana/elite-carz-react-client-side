@@ -11,7 +11,7 @@ const MainMenu = () => {
 	};
 
 	return (
-		<ul className="h-full flex flex-col md:flex-row md:items-center md:justify-end md:pl-4 space-y-2 md:space-y-0 md:space-x-8 font-my-title uppercase font-medium text-xl md:text-base text-gray-300 md:text-my-dark-gray tracking-wide md:tracking-my-tiny">
+		<ul className="h-full flex flex-col md:flex-row md:items-center md:justify-end md:pl-4 space-y-4 md:space-y-0 md:space-x-6 lg:space-x-8 font-my-title uppercase font-medium text-xl md:text-sm lg:text-base text-gray-300 md:text-my-dark-gray tracking-wide md:tracking-wide lg:tracking-my-tiny">
 			<li>
 				<NavLink
 					to="/home"
@@ -37,6 +37,15 @@ const MainMenu = () => {
 					className="hover:text-my-primary"
 				>
 					All Blogs
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					to="/contact"
+					activeStyle={navLinkActiveStyle}
+					className="hover:text-my-primary"
+				>
+					Contact
 				</NavLink>
 			</li>
 			{user.email && (

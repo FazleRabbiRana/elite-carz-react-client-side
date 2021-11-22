@@ -49,7 +49,7 @@ const ProductDetailInfo = ({ product }) => {
 				</div>
 			</div>
 			<div className="about mt-6">
-				<h4 className="text-xl font-semibold mb-3">About this car</h4>
+				<h4 className="text-xl tracking-normal font-semibold mb-3">More About this car</h4>
 				<p className="text-sm">Color: <span className="font-medium text-true-gray-800">{specs?.color}</span></p>
 				<p className="mt-3 text-sm leading-relaxed">{description}</p>
 			</div>

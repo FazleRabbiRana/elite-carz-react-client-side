@@ -1,23 +1,22 @@
 /**
-* Slick slider custom style
+* Banner slider dots custom style
 */
-.slick-dots {
-	position: absolute;
-	bottom: 30px;
-	left: 50%;
-	transform: translateX(-50%);
+.home-banner .slick-dots li {
+	width: auto;
+	height: auto;
 }
 
-.slick-dots li button:before {
-	font-size: 12px;
-	color: #ddd;
-	opacity: 1;
+.home-banner .slick-dots li button {
+	width: 30px;
+	height: 3px;
+	padding: 0;
+	background-color: #ddd;
 }
 
-.slick-dots li.slick-active button:before {
-	color: var(--clr-primary);
+.home-banner .slick-dots li.slick-active button {
+	background-color: var(--clr-primary);
 }
 
-.slick-active.slick-current {
-	z-index: 1;
+.home-banner .slick-dots li button:before {
+	display: none;
 }

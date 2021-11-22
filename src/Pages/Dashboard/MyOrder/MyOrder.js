@@ -4,9 +4,14 @@ import { RiCloseCircleLine } from 'react-icons/ri';
 
 const MyOrder = ({ order, orders, setOrders }) => {
 	const { name, image, price } = order?.orderedProduct;
+	const { status } = order;
 
 	// handle remove order
 	const handleRemoveOrder = id => {
+		if (status.toLowerCase() === 'shipped') {
+			alert('Can\'t remove, already completed.');
+			return;
+		}
 		const proceed = window.confirm('Will be removed from Database. \nProceed?');
 		const url = `https://sheltered-caverns-44637.herokuapp.com/orders/${id}`;
 		if (proceed) {
@@ -33,10 +38,14 @@ const MyOrder = ({ order, orders, setOrders }) => {
 			<div className="flex-grow py-1 px-2 font-my-title text-sm md:text-base">
 				<h4 className="font-normal text-base md:text-lg">{name}</h4>
 				<p className="sm:block">&#36;{price}</p>
-				<p className="sm:block">Status: {order?.status}</p>
+				<p className="sm:block">Status: {status}</p>
 			</div>
 			<div className="flex-shrink-0 flex items-center">
-				<button onClick={() => handleRemoveOrder(order._id)} className="m-1 md:m-2">
+				<button 
+					onClick={() => handleRemoveOrder(order._id)} 
+					className={status.toLowerCase() === 'shipped' ? 'm-1 md:m-2 opacity-40' : 'm-1 md:m-2'}
+					disabled={status.toLowerCase() === 'shipped' ? true : false}
+				>
 					<RiCloseCircleLine className="text-2xl text-red-500 hover:text-red-700" />
 				</button>
 			</div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import BlogCard from '../../Shared/BlogCard/BlogCard';
-import blogBg from '../../../images/bg/bg-4.jpg';
+import blogBg from '../../../images/bg/bg-3.jpg';
 
 const Blogs = () => {
 	const [blogs, setBlogs] = useState([]);

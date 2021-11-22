@@ -46,7 +46,7 @@ const useFirebase = () => {
 				// add user to database
 				saveUserToDatabase(email, name, 'POST');
 				// return to prev page
-				const redirect_url = location?.state?.from || '/home';
+				const redirect_url = location?.state?.from || '/dashboard';
 				history.replace(redirect_url);
 			})
 			.catch(error => {
@@ -63,7 +63,7 @@ const useFirebase = () => {
 			.then(result => {
 				setAuthError('');
 				// return to prev page
-				const redirect_url = location?.state?.from || '/home';
+				const redirect_url = location?.state?.from || '/dashboard';
 				history.replace(redirect_url);
 			})
 			.catch(error => {
@@ -84,7 +84,7 @@ const useFirebase = () => {
 				// update user to database
 				saveUserToDatabase(user.email, user.displayName, 'PUT');
 				// return to prev page
-				const redirect_url = location?.state?.from || '/home';
+				const redirect_url = location?.state?.from || '/dashboard';
 				history.replace(redirect_url);
 			})
 			.catch(error => {

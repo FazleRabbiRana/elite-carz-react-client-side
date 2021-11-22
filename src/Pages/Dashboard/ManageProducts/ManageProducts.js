@@ -5,6 +5,7 @@ import ManageProduct from '../ManageProduct/ManageProduct';
 
 const ManageProducts = () => {
 	const [products, setProducts] = useState([]);
+	const [isEnoughProducts, setIsEnoughProducts] = useState(true);
 	const { user } = useAuthContexts();
 
 	// load all products by email
@@ -15,6 +16,9 @@ const ManageProducts = () => {
 			.then(res => {
 				// console.log(res.data);
 				setProducts(res.data);
+				if (res.data.length < 6) {
+					setIsEnoughProducts(false);
+				} 
 			})
 			.catch(error => {
 				console.log(error);
@@ -31,6 +35,7 @@ const ManageProducts = () => {
 						product={product}
 						products={products}
 						setProducts={setProducts}
+						isEnoughProducts={isEnoughProducts}
 					/>)
 				}
 			</div>

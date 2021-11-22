@@ -1,11 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import useAuthContexts from '../../../hooks/useAuthContexts';
 import ManageOrderItem from '../ManageOrderItem/ManageOrderItem';
 
 const ManageAllOrders = () => {
 	const [orders, setOrders] = useState([]);
-	const { user } = useAuthContexts();
 
 	// load all orders by email
 	useEffect(() => {

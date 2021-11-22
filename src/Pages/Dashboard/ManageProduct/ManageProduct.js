@@ -2,11 +2,15 @@ import axios from 'axios';
 import React from 'react';
 import { RiCloseCircleLine } from 'react-icons/ri';
 
-const ManageProduct = ({ product, products, setProducts }) => {
+const ManageProduct = ({ product, products, setProducts, isEnoughProducts }) => {
 	const { _id, name, image, price } = product;
 
 	// handle remove product
 	const handleRemoveProduct = id => {
+		if (!isEnoughProducts) {
+			alert('Sorry, minimum products limit reached.');
+			return;
+		}
 		const proceed = window.confirm('Will be removed from Database. \nProceed?');
 		const url = `https://sheltered-caverns-44637.herokuapp.com/products/${id}`;
 		if (proceed) {
