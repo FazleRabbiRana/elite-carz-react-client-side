@@ -1,13 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const BlogCard = ({ blog }) => {
+const BlogCard = ({ blog, index }) => {
 	const { _id, title, image } = blog;
 
 	return (
-		<div className="blog-card flex flex-col group">
+		<div 
+			className="blog-card flex flex-col group"
+			data-aos="fade-up" 
+			data-aos-duration="700" 
+			data-aos-delay={`${index * 100 + 50}`}
+			data-aos-once="true"
+			data-aos-anchor-placement="top-bottom"
+		>
 			<div className="image mb-4 border-4 border-gray-600 overflow-hidden">
-				<img src={image} alt={title} className="w-full h-full object-cover object-center transform duration-500 group-hover:scale-125" />
+				<img src={image} alt={title} className="w-full h-full object-cover object-center transform duration-500 group-hover:scale-110" />
 			</div>
 			<Link to={`blog/${_id}`}>
 				<h3 className="flex-auto border-l-4 border-my-primary py-1 pl-4 text-my-primary-dark text-xl md:text-2xl">{title}</h3>

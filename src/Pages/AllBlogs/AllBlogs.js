@@ -36,7 +36,7 @@ const AllBlogs = () => {
 					<div className="container">
 						<div className="blogs-wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 sm:gap-x-6 xl:gap-x-10">
 						{
-							blogs.map(blog => <BlogCard key={blog._id} blog={blog} />)
+							blogs.map((blog, index) => <BlogCard key={blog._id} blog={blog} index={index} />)
 						}
 						</div>
 					</div>

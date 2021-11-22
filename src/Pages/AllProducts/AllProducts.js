@@ -37,9 +37,11 @@ const AllProducts = () => {
 					{isLoading && <LoadingStatus />}
 					<div className="container">
 						<div className="products-wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 sm:gap-x-4 md:gap-x-6 xl:gap-x-12">
-							{products.map(product => (
-								<ProductCard key={product._id} product={product} />
-							))}
+							{products.map((product, index) => <ProductCard 
+								key={product._id} 
+								product={product} 
+								index={index} 
+							/>)}
 						</div>
 					</div>
 				</section>

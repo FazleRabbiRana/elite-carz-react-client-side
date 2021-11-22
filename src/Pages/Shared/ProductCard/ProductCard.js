@@ -3,11 +3,18 @@ import { Link } from 'react-router-dom';
 import { RiTimerFlashLine } from 'react-icons/ri';
 import { MdOutlineElectricCar, MdOutlineSpeed } from 'react-icons/md';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, index }) => {
 	const { _id, name, brandName, image, price, specs } = product;
 
 	return (
-		<div className="product-card bg-white h-full flex flex-col relative text-center font-my-title group">
+		<div 
+			className="product-card bg-white h-full flex flex-col relative text-center font-my-title group"
+			data-aos="fade-up" 
+			data-aos-duration="700" 
+			data-aos-delay={`${index * 100 + 50}`}
+			data-aos-once="true"
+			data-aos-anchor-placement="top-bottom"
+		>
 			<div className="image overflow-hidden relative">
 				<img
 					src={image}

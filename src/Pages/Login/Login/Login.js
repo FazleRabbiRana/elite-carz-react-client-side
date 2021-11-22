@@ -14,7 +14,15 @@ const Login = () => {
 						<div className="md:w-1/2 lg:max-w-sm">
 							<LoginForm />
 						</div>
-						<div className="flex-shrink-0 h-10 w-10 rounded-full bg-my-primary text-true-gray-800 font-semibold flex items-center justify-center text-center mx-auto">Or</div>
+						<div 
+							className="flex-shrink-0 h-10 w-10 rounded-full bg-my-primary text-true-gray-800 font-semibold flex items-center justify-center text-center mx-auto"
+							data-aos="fade-down" 
+							data-aos-duration="500" 
+							data-aos-delay="300"
+							data-aos-once="false"
+						>
+							Or
+						</div>
 						<div className="md:w-1/2 lg:max-w-sm">
 							<RegisterForm />
 						</div>

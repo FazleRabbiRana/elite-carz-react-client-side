@@ -125,7 +125,7 @@ const Reviews = () => {
 										</div>
 									</div>
 									<h3 className="mt-2 text-white">
-										<span className="inline-block text-my-primary-dark text-2xl">
+										<span className="inline-block text-2xl">
 											{review?.userName}
 										</span>
 										, &nbsp;

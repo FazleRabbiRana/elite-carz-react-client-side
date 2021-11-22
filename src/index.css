@@ -40,6 +40,10 @@
     @apply inline-block cursor-pointer text-center uppercase py-3 px-6 font-my-title font-medium tracking-wide leading-none text-black bg-my-primary duration-300 hover:bg-my-primary-light;
   }
 
+  .btn-social-login {
+    @apply w-full h-10 bg-blue-600 text-white flex flex-nowrap items-center text-center duration-300 hover:bg-my-primary-light hover:text-black;
+  }
+
   .navbar {
     @apply h-16 md:h-20 py-1 bg-white shadow flex items-center absolute top-0 left-0 w-full z-30;
   }

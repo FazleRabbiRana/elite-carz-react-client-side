@@ -7,6 +7,8 @@ import {
 	signInWithEmailAndPassword,
 	signInWithPopup,
 	GoogleAuthProvider,
+	TwitterAuthProvider,
+	GithubAuthProvider,
 	onAuthStateChanged,
 	signOut,
 } from 'firebase/auth';
@@ -23,6 +25,8 @@ const useFirebase = () => {
 
 	const auth = getAuth();
 	const googleProvider = new GoogleAuthProvider();
+	const twitterProvider = new TwitterAuthProvider();
+	const githubProvider = new GithubAuthProvider();
 
 	// register user with email and password
 	const registerWithEmail = (name, email, password, location, history) => {
@@ -73,10 +77,57 @@ const useFirebase = () => {
 			.finally(() => setIsLoading(false));
 	};
 
+	// sign in with social
+	const signInWithSocial = () => {
+		
+	}
+
 	// sign in with google
 	const signInWithGoogle = (location, history) => {
 		setIsLoading(true);
 		signInWithPopup(auth, googleProvider)
+			.then(result => {
+				const user = result.user;
+				// console.log(user);
+				setAuthError('');
+				// update user to database
+				saveUserToDatabase(user.email, user.displayName, 'PUT');
+				// return to prev page
+				const redirect_url = location?.state?.from || '/dashboard';
+				history.replace(redirect_url);
+			})
+			.catch(error => {
+				console.log(error);
+				setAuthError(error.message);
+			})
+			.finally(() => setIsLoading(false));
+	};
+
+	// sign in with twitter
+	const signInWithTwitter = (location, history) => {
+		setIsLoading(true);
+		signInWithPopup(auth, twitterProvider)
+			.then(result => {
+				const user = result.user;
+				// console.log(user);
+				setAuthError('');
+				// update user to database
+				saveUserToDatabase(user.email, user.displayName, 'PUT');
+				// return to prev page
+				const redirect_url = location?.state?.from || '/dashboard';
+				history.replace(redirect_url);
+			})
+			.catch(error => {
+				console.log(error);
+				setAuthError(error.message);
+			})
+			.finally(() => setIsLoading(false));
+	};
+
+	// sign in with twitter
+	const signInWithGithub = (location, history) => {
+		setIsLoading(true);
+		signInWithPopup(auth, githubProvider)
 			.then(result => {
 				const user = result.user;
 				// console.log(user);
@@ -160,6 +211,8 @@ const useFirebase = () => {
 		registerWithEmail,
 		loginWithEmail,
 		signInWithGoogle,
+		signInWithTwitter,
+		signInWithGithub,
 		logOut,
 		setIsLoading,
 	};

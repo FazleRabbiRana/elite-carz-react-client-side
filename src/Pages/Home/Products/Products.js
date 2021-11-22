@@ -35,7 +35,11 @@ const Products = () => {
 				{isLoading && <LoadingStatus />}
 				<div className="products-wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 sm:gap-x-4 md:gap-x-6 xl:gap-x-12">
 					{
-						homeProducts.map(product => <ProductCard key={product._id} product={product} />)
+						homeProducts.map((product, index) => <ProductCard 
+							key={product._id} 
+							product={product} 
+							index={index} 
+						/>)
 					}
 				</div>
 			</div>

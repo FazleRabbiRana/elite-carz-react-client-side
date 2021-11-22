@@ -16,8 +16,16 @@ import StartFromTop from './Pages/Shared/StartFromTop/StartFromTop';
 import Terms from './Pages/Terms/Terms';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import Contact from './Pages/Contact/Contact';
+import 'aos/dist/aos.css';
+import { useEffect } from 'react';
+import Aos from 'aos';
 
 function App() {
+  // initialize aos plugin
+	useEffect(() => {
+		Aos.init();
+	}, []);
+
   return (
     <AuthProvider>
       <StartFromTop />

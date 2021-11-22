@@ -24,7 +24,9 @@ const NotFound = () => {
 			>
 				<div className="w-full h-full flex items-center justify-center text-center">
 					<div className="container mb-12">
-						<h3 className="text-7xl text-gray-300 animate-myHeartBeat mb-10">Oops!</h3>
+						<p className="text-xl text-gray-300 mb-10">
+							Oops! <span className="inline-block mx-4 text-7xl text-my-primary animate-myHeartBeat">404</span> error
+						</p>
 						<h2 className="text-my-primary uppercase text-4xl lg:text-5xl animate-myMoveUp">Page Not Found</h2>
 						<div className="mt-10">
 							<Link 

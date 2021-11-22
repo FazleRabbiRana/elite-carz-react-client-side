@@ -1,12 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { RiAsterisk, RiGoogleFill } from 'react-icons/ri';
+import { RiAsterisk, RiGoogleFill, RiTwitterFill, RiGithubFill } from 'react-icons/ri';
 import { useHistory, useLocation } from 'react-router-dom';
 import useAuthContexts from '../../../hooks/useAuthContexts';
 import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
 
 const LoginForm = () => {
-	const { loginWithEmail, signInWithGoogle, user, isLoading, authError } = useAuthContexts();
+	const { loginWithEmail, signInWithGoogle, signInWithTwitter, signInWithGithub, user, isLoading, authError } = useAuthContexts();
 	const { register, handleSubmit, formState: { errors } } = useForm();
 	const location = useLocation();
 	const history = useHistory();
@@ -20,6 +20,16 @@ const LoginForm = () => {
 	// handle google sign in
 	const handleGoogleSignIn = () => {
 		signInWithGoogle(location, history);
+	}
+
+	// handle twitter sign in
+	const handleTwitterSignIn = () => {
+		signInWithTwitter(location, history);
+	}
+
+	// handle github sign in
+	const handleGithubSignIn = () => {
+		signInWithGithub(location, history);
 	}
 
 	return (
@@ -70,15 +80,33 @@ const LoginForm = () => {
 				<span className="px-3">Or use</span>
 				<hr className="flex-auto border-my-primary border-dashed" />
 			</div>
-			<div className="direct-sign-in-options">
+			<div className="direct-sign-in-options space-y-4">
 				<button 
 					onClick={handleGoogleSignIn}
-					className="w-full h-10 bg-blue-600 text-white flex flex-nowrap items-center text-center duration-300 hover:bg-blue-700"
+					className="btn-social-login"
 				>
-					<span className="flex-shrink-0 h-full w-12 flex items-center justify-center border-r border-blue-500">
+					<span className="flex-shrink-0 h-full w-12 flex items-center justify-center border-r border-true-gray-400">
 						<RiGoogleFill className="text-xl" />
 					</span>
 					<span className="flex-auto">Login with Google</span>
+				</button>
+				<button 
+					onClick={handleTwitterSignIn}
+					className="btn-social-login"
+				>
+					<span className="flex-shrink-0 h-full w-12 flex items-center justify-center border-r border-true-gray-400">
+						<RiTwitterFill className="text-xl" />
+					</span>
+					<span className="flex-auto">Login with Twitter</span>
+				</button>
+				<button 
+					onClick={handleGithubSignIn}
+					className="btn-social-login"
+				>
+					<span className="flex-shrink-0 h-full w-12 flex items-center justify-center border-r border-true-gray-400">
+						<RiGithubFill className="text-xl" />
+					</span>
+					<span className="flex-auto">Login with GitHub</span>
 				</button>
 			</div>
 		</div>
