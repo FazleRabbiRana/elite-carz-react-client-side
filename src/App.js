@@ -18,12 +18,12 @@ import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import Contact from './Pages/Contact/Contact';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
-import Aos from 'aos';
+import AOS from 'aos';
 
 function App() {
   // initialize aos plugin
 	useEffect(() => {
-		Aos.init();
+		AOS.init();
 	}, []);
 
   return (

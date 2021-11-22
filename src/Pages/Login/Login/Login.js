@@ -15,11 +15,12 @@ const Login = () => {
 							<LoginForm />
 						</div>
 						<div 
-							className="flex-shrink-0 h-10 w-10 rounded-full bg-my-primary text-true-gray-800 font-semibold flex items-center justify-center text-center mx-auto"
+							className="flex-shrink-0 h-12 w-12 rounded-full bg-my-primary text-true-gray-800 font-semibold flex items-center justify-center text-center mx-auto"
 							data-aos="fade-down" 
 							data-aos-duration="500" 
 							data-aos-delay="300"
-							data-aos-once="false"
+							data-aos-once="true"
+							data-aos-anchor="#login_page"
 						>
 							Or
 						</div>
