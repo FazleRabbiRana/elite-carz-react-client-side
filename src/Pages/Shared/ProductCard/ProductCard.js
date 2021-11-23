@@ -1,10 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { RiTimerFlashLine } from 'react-icons/ri';
 import { MdOutlineElectricCar, MdOutlineSpeed } from 'react-icons/md';
+import AOS from 'aos';
 
 const ProductCard = ({ product, index }) => {
 	const { _id, name, brandName, image, price, specs } = product;
+
+	// initialize aos plugin
+	useEffect(() => {
+		AOS.init();
+	}, []);
 
 	return (
 		<div 

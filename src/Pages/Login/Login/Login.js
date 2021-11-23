@@ -18,7 +18,7 @@ const Login = () => {
 							className="flex-shrink-0 h-12 w-12 rounded-full bg-my-primary text-true-gray-800 font-semibold flex items-center justify-center text-center mx-auto"
 							data-aos="fade-down" 
 							data-aos-duration="500" 
-							data-aos-delay="300"
+							data-aos-delay="100"
 							data-aos-once="true"
 							data-aos-anchor="#login_page"
 						>

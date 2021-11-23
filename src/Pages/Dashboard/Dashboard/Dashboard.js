@@ -65,7 +65,7 @@ const Dashboard = () => {
 								<span className="hidden md:block pl-3">Home</span>
 							</NavLink>
 						</li>
-						<li className="border-b">
+						<li>
 							<NavLink
 								exact
 								to={`${url}`}
@@ -81,7 +81,7 @@ const Dashboard = () => {
 						</li>
 						{!isAdmin && (
 							<>
-								<li className="border-b">
+								<li className="border-t">
 									<NavLink
 										exact
 										to={`${url}/my-orders`}
@@ -95,7 +95,7 @@ const Dashboard = () => {
 										<span className="hidden md:block pl-3">My Orders</span>
 									</NavLink>
 								</li>
-								<li className="border-b">
+								<li className="border-t">
 									<NavLink
 										to={`${url}/add-review`}
 										title="Review"
@@ -108,7 +108,7 @@ const Dashboard = () => {
 										<span className="hidden md:block pl-3">Review</span>
 									</NavLink>
 								</li>
-								<li className="border-b">
+								<li className="border-t">
 									<NavLink
 										to={`${url}/pay`}
 										title="Pay"
@@ -125,7 +125,7 @@ const Dashboard = () => {
 						)}
 						{isAdmin && (
 							<>
-								<li className="border-b">
+								<li className="border-t">
 									<NavLink
 										to={`${url}/manage-all-orders`}
 										title="Manage all orders"
@@ -140,7 +140,7 @@ const Dashboard = () => {
 										</span>
 									</NavLink>
 								</li>
-								<li className="border-b">
+								<li className="border-t">
 									<NavLink
 										to={`${url}/manage-products`}
 										title="Manage products"
@@ -155,7 +155,7 @@ const Dashboard = () => {
 										</span>
 									</NavLink>
 								</li>
-								<li className="border-b">
+								<li className="border-t">
 									<NavLink
 										to={`${url}/add-product`}
 										title="Add a product"
@@ -168,7 +168,7 @@ const Dashboard = () => {
 										<span className="hidden md:block pl-3">Add a Product</span>
 									</NavLink>
 								</li>
-								<li className="border-b">
+								<li className="border-t">
 									<NavLink
 										to={`${url}/make-admin`}
 										title="Make admin"
@@ -183,7 +183,7 @@ const Dashboard = () => {
 								</li>
 							</>
 						)}
-						<li>
+						<li className="border-t">
 							<button
 								onClick={logOut}
 								title="Logout"

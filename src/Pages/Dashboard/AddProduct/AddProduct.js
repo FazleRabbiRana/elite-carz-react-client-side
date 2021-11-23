@@ -183,12 +183,12 @@ const AddProduct = () => {
 						<input
 							type="submit"
 							value="Add Product"
-							className="btn-regular text-sm leading-none px-6"
+							className="btn-regular text-sm leading-none px-4 sm:px-6"
 						/>
 						<input
 							type="reset"
 							value="Clear fields"
-							className="btn-regular bg-my-secondary-light text-sm leading-none px-6 ml-4"
+							className="btn-regular bg-my-secondary-light text-sm leading-none px-4 sm:px-6 ml-4"
 						/>
 					</div>
 				</form>

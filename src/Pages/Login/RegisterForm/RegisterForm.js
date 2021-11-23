@@ -117,8 +117,10 @@ const RegisterForm = () => {
 							Please fill up the form properly.
 						</p>
 					)}
-					{(!user?.email && !isLoading) && <input type="submit" className="btn-regular" value="Register" />}
-					{isLoading && <LoadingStatus />}
+					<div className="flex items-start space-x-4">
+						{(!user?.email && !isLoading) && <input type="submit" className="btn-regular" value="Register" />}
+						{isLoading && <LoadingStatus />}
+					</div>
 				</div>
 			</form>
 		</div>

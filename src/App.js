@@ -17,15 +17,8 @@ import Terms from './Pages/Terms/Terms';
 import PrivacyPolicy from './Pages/PrivacyPolicy/PrivacyPolicy';
 import Contact from './Pages/Contact/Contact';
 import 'aos/dist/aos.css';
-import { useEffect } from 'react';
-import AOS from 'aos';
 
 function App() {
-  // initialize aos plugin
-	useEffect(() => {
-		AOS.init();
-	}, []);
-
   return (
     <AuthProvider>
       <StartFromTop />

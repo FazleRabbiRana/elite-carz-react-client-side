@@ -6,6 +6,7 @@ import Footer from '../../Shared/Footer/Footer';
 import HeaderNavbar from '../../Shared/Header/HeaderNavbar/HeaderNavbar';
 import PlaceOrder from '../PlaceOrder/PlaceOrder';
 import ProductDetailInfo from '../ProductDetailInfo/ProductDetailInfo';
+import AOS from 'aos';
 
 const ProductDetail = () => {
 	let { productId } = useParams();
@@ -25,6 +26,8 @@ const ProductDetail = () => {
 			.catch(error => {
 				console.log(error);
 			});
+			// initialize aos plugin
+			AOS.init();
 	}, [productId, setIsLoading]);
 
 	return (
@@ -38,7 +41,14 @@ const ProductDetail = () => {
 								{name}<br /> 
 								<span className="text-lg">Brand: <span className="font-bold">{brandName}</span></span>
 							</h2>
-							<h3 className="inline-flex flex-nowrap bg-my-secondary text-white font-semibold text-2xl">
+							<h3 
+								className="inline-flex flex-nowrap bg-my-secondary text-white font-semibold text-2xl"
+								data-aos="fade-left"
+								data-aos-delay="100"
+								data-aos-duration="700"
+								data-aos-once="true"
+								data-aos-anchor-placement="top-bottom"
+							>
 								<span className="px-3 py-1 border-r">&#36;</span>
 								<span className="px-4 py-1">{price}</span>
 							</h3>

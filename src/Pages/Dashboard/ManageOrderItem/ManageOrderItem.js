@@ -1,6 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+// initialize Swal (sweet alert)
+const MySwal = withReactContent(Swal);
 
 const ManageOrderItem = ({ order, orders, setOrders }) => {
 	const { name, image } = order?.orderedProduct;
@@ -24,8 +29,16 @@ const ManageOrderItem = ({ order, orders, setOrders }) => {
 				if (res.data.modifiedCount) {
 					setSuccess(true);
 					setNewStatus(changedStatus);
+					MySwal.fire({
+						type: 'success',
+						icon: 'success',
+						title: `<span class="font-medium text-xl md:text-2xl tracking-normal md:tracking-normal md:leading-relaxed">Successfully changed order status.</span>`,
+						buttonsStyling: false,
+						confirmButtonText: `<span class="btn-regular py-2">OK</span>`,
+					});
 				}
 			})
+			.catch(err => console.log(err));
 	};
 
 	// handle remove order

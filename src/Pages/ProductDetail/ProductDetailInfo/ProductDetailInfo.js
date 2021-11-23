@@ -6,9 +6,9 @@ const ProductDetailInfo = ({ product }) => {
 	const { name, image, description, specs } = product;
 
 	return (
-		<div className="product-detail-info">
-			<div className="image">
-				<img src={image} alt={name} className="w-full object-cover object-center" />
+		<div className="product-detail-info h-full">
+			<div className="image bg-gray-200 w-full md:min-h-250px" style={{aspectRatio: '16/9'}}>
+				<img src={image} alt={name} className="w-full h-full object-cover object-center" />
 			</div>
 			<div className="bg-white py-4 px-2 sm:p-4 flex flex-nowrap justify-evenly text-center space-x-4 border-t border-b my-4 font-my-title text-lg">
 				<div title="horsepower">

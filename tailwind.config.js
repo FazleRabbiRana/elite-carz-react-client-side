@@ -22,6 +22,10 @@ module.exports = {
 				'true-gray': colors.trueGray,
 				'my-dark-gray': 'var(--clr-dark-gray)',
 				'my-yellow-cream': 'var(--clr-yellow-cream)',
+				'my-google': 'var(--clr-google)',
+				'my-github': 'var(--clr-github)',
+				'my-twitter': 'var(--clr-twitter)',
+				'my-facebook': 'var(--clr-facebook)',
         'my-primary': {
           light: 'var(--clr-primary-light)',
           DEFAULT: 'var(--clr-primary)',
@@ -58,10 +62,11 @@ module.exports = {
         'my-around': '0 2px 15px 0px rgba(0, 0, 0, 0.2)',
       },
       minHeight: {
+        '250px': '250px',
         'vh-50': '50vh',
-        'vh-55': '55vh',
-        'vh-60': '60vh',
-        'vh-70': '70vh',
+        // 'vh-55': '55vh',
+        // 'vh-60': '60vh',
+        // 'vh-70': '70vh',
       },
       backgroundImage: {
         'my-gradient-radial' : 'radial-gradient(circle, rgba(0,0,0,0.80), transparent, transparent)',
@@ -94,6 +99,8 @@ module.exports = {
     extend: {
 			scale: ['group-hover'],
       visibility: ['hover', 'focus', 'group-hover', 'group-focus'],
+      opacity: ['disabled'],
+      pointerEvents: ['disabled'],
 		},
   },
   // corePlugins: {

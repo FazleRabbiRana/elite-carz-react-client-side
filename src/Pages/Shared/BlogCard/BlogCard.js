@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import AOS from 'aos';
 
 const BlogCard = ({ blog, index }) => {
 	const { _id, title, image } = blog;
+
+	// initialize aos plugin
+	useEffect(() => {
+		AOS.init();
+	}, []);
 
 	return (
 		<div 

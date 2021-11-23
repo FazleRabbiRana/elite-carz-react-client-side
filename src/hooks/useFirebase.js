@@ -7,8 +7,9 @@ import {
 	signInWithEmailAndPassword,
 	signInWithPopup,
 	GoogleAuthProvider,
-	TwitterAuthProvider,
 	GithubAuthProvider,
+	TwitterAuthProvider,
+	FacebookAuthProvider,
 	onAuthStateChanged,
 	signOut,
 } from 'firebase/auth';
@@ -25,8 +26,9 @@ const useFirebase = () => {
 
 	const auth = getAuth();
 	const googleProvider = new GoogleAuthProvider();
-	const twitterProvider = new TwitterAuthProvider();
 	const githubProvider = new GithubAuthProvider();
+	const twitterProvider = new TwitterAuthProvider();
+	const facebookProvider = new FacebookAuthProvider();
 
 	// register user with email and password
 	const registerWithEmail = (name, email, password, location, history) => {
@@ -77,7 +79,7 @@ const useFirebase = () => {
 			.finally(() => setIsLoading(false));
 	};
 
-	// sign in with social
+	// sign in with social account
 	const signInWithSocial = (provider, location, history) => {
 		setIsLoading(true);
 		signInWithPopup(auth, provider)
@@ -103,14 +105,19 @@ const useFirebase = () => {
 		signInWithSocial(googleProvider, location, history);
 	};
 
+	// sign in with github
+	const signInWithGithub = (location, history) => {
+		signInWithSocial(githubProvider, location, history);
+	};
+
 	// sign in with twitter
 	const signInWithTwitter = (location, history) => {
 		signInWithSocial(twitterProvider, location, history);
 	};
 
-	// sign in with twitter
-	const signInWithGithub = (location, history) => {
-		signInWithSocial(githubProvider, location, history);
+	// sign in with facebook
+	const signInWithFacebook = (location, history) => {
+		signInWithSocial(facebookProvider, location, history);
 	};
 
 	// observe user auth state
@@ -179,8 +186,9 @@ const useFirebase = () => {
 		registerWithEmail,
 		loginWithEmail,
 		signInWithGoogle,
-		signInWithTwitter,
 		signInWithGithub,
+		signInWithTwitter,
+		signInWithFacebook,
 		logOut,
 		setIsLoading,
 	};

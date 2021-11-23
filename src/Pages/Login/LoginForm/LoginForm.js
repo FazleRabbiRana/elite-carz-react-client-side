@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { RiAsterisk, RiGoogleFill, RiTwitterFill, RiGithubFill } from 'react-icons/ri';
+import { RiAsterisk, RiGoogleFill, RiGithubFill, RiTwitterFill } from 'react-icons/ri';
 import { useHistory, useLocation } from 'react-router-dom';
 import useAuthContexts from '../../../hooks/useAuthContexts';
 import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
+import AOS from 'aos';
 
 const LoginForm = () => {
 	const { loginWithEmail, signInWithGoogle, signInWithTwitter, signInWithGithub, user, isLoading, authError } = useAuthContexts();
@@ -17,20 +18,14 @@ const LoginForm = () => {
 		loginWithEmail(data.loginEmail, data.loginPassword, location, history);
 	};
 
-	// handle google sign in
-	const handleGoogleSignIn = () => {
-		signInWithGoogle(location, history);
-	}
-
-	// handle twitter sign in
-	const handleTwitterSignIn = () => {
-		signInWithTwitter(location, history);
-	}
-
-	// handle github sign in
-	const handleGithubSignIn = () => {
-		signInWithGithub(location, history);
-	}
+	// initialize aos plugin
+	useEffect(() => {
+		AOS.init({
+			duration: 700,
+			once: true,
+			anchorPlacement: 'top-bottom',
+		});
+	}, []);
 
 	return (
 		<div className="login-form-wrapper">
@@ -67,23 +62,31 @@ const LoginForm = () => {
 							Please fill up the form properly.
 						</p>
 					)}
-					{!user?.email && <input type="submit" className="btn-regular" value="Login" />}
-					{isLoading && <LoadingStatus />}
+					<div className="flex items-start space-x-4">
+						{!user?.email && <input type="submit" className="btn-regular" value="Login" />}
+						{isLoading && <LoadingStatus />}
+					</div>
 				</div>
 			</form>
+
 			<div className="status">
 				{user?.email && <h5 className="mt-3 text-green-600">Logged in successfully!</h5>}
 				{authError && <h5 className="mt-3 text-red-600">{authError}</h5>}
 			</div>
+
 			<div className="divider mt-5 mb-3 flex flex-nowrap items-center font-my-title uppercase font-semibold text-true-gray-800">
 				<hr className="flex-auto border-my-primary border-dashed" />
 				<span className="px-3">Or use</span>
 				<hr className="flex-auto border-my-primary border-dashed" />
 			</div>
+
 			<div className="direct-sign-in-options space-y-4">
 				<button 
-					onClick={handleGoogleSignIn}
-					className="btn-social-login"
+					onClick={() => signInWithGoogle(location, history)}
+					className="btn-social-login bg-my-google"
+					data-aos="fade-up"
+					data-aos-delay="100"
+					data-aos-anchor="#login_page"
 				>
 					<span className="flex-shrink-0 h-full w-12 flex items-center justify-center border-r border-true-gray-400">
 						<RiGoogleFill className="text-xl" />
@@ -91,23 +94,38 @@ const LoginForm = () => {
 					<span className="flex-auto">Login with Google</span>
 				</button>
 				<button 
-					onClick={handleTwitterSignIn}
-					className="btn-social-login"
-				>
-					<span className="flex-shrink-0 h-full w-12 flex items-center justify-center border-r border-true-gray-400">
-						<RiTwitterFill className="text-xl" />
-					</span>
-					<span className="flex-auto">Login with Twitter</span>
-				</button>
-				<button 
-					onClick={handleGithubSignIn}
-					className="btn-social-login"
+					onClick={() => signInWithGithub(location, history)}
+					className="btn-social-login bg-my-github"
+					data-aos="fade-up"
+					data-aos-delay="200"
+					data-aos-anchor="#login_page"
 				>
 					<span className="flex-shrink-0 h-full w-12 flex items-center justify-center border-r border-true-gray-400">
 						<RiGithubFill className="text-xl" />
 					</span>
 					<span className="flex-auto">Login with GitHub</span>
 				</button>
+				<button 
+					onClick={() => signInWithTwitter(location, history)}
+					className="btn-social-login bg-my-twitter"
+					data-aos="fade-up"
+					data-aos-delay="300"
+					data-aos-anchor="#login_page"
+				>
+					<span className="flex-shrink-0 h-full w-12 flex items-center justify-center border-r border-true-gray-400">
+						<RiTwitterFill className="text-xl" />
+					</span>
+					<span className="flex-auto">Login with Twitter</span>
+				</button>
+				{/* <button 
+					onClick={() => signInWithFacebook(location, history)}
+					className="btn-social-login bg-my-facebook"
+				>
+					<span className="flex-shrink-0 h-full w-12 flex items-center justify-center border-r border-true-gray-400">
+						<RiFacebookFill className="text-xl" />
+					</span>
+					<span className="flex-auto">Login with Facebook</span>
+				</button> */}
 			</div>
 		</div>
 	);

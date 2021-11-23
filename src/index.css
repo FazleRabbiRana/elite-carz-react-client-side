@@ -10,14 +10,15 @@
     --clr-primary: hsl(47, 100%, 51%);
     --clr-primary-light: hsl(46, 100%, 63%);
     --clr-primary-dark: hsl(45, 100%, 47%);
-    /* --clr-secondary: hsl(1, 79%, 66%);
-    --clr-secondary-light: hsl(2, 85%, 76%);
-    --clr-secondary-dark: hsl(1, 91%, 60%); */
     --clr-secondary: hsl(227, 100%, 51%);
     --clr-secondary-light: hsl(233, 100%, 64%);
     --clr-secondary-dark: hsl(228, 100%, 48%);
     --clr-dark-gray: #23292e;
     --clr-yellow-cream: #f8f4d9;
+    --clr-google: #4285F4;
+    --clr-github: #171515;
+    --clr-twitter: #00acee;
+    --clr-facebook: #3b5998;
     --font-body: 'Open Sans', 'ui-sans-serif', 'sans-serif', 'system-ui';
     --font-title: 'Saira Condensed', 'ui-sans-serif', 'sans-serif', 'system-ui';
   }
