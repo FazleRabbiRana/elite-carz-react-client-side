@@ -4,6 +4,11 @@ import { useForm } from "react-hook-form";
 import { RiAsterisk } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+// initialize Swal (sweet alert)
+const MySwal = withReactContent(Swal);
 
 const PlaceOrder = ({ product }) => {
 	const { user } = useAuthContexts();
@@ -22,6 +27,15 @@ const PlaceOrder = ({ product }) => {
 				if (res.data.insertedId) {
 					setOrderSuccess(true);
 					reset();
+					MySwal.fire({
+						icon: 'success',
+						title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Order PLACED successfully!</span>`,
+						confirmButtonText: `OK`,
+						buttonsStyling: false,
+						customClass: {
+							confirmButton: 'btn-regular py-2',
+						},
+					});
 				}
 			})
 			.catch(error => console.log(error));
@@ -82,7 +96,6 @@ const PlaceOrder = ({ product }) => {
 							Please Fill up the form properly.
 						</p>
 					)}
-					{orderSuccess && <h5 className="mb-3 text-green-600 text-xl">Order successful!</h5>}
 					<input type="submit" className="btn-regular" value="Place Order" />
 				</div>
     	</form>

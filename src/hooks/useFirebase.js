@@ -11,9 +11,15 @@ import {
 	TwitterAuthProvider,
 	FacebookAuthProvider,
 	onAuthStateChanged,
+	sendPasswordResetEmail,
 	signOut,
 } from 'firebase/auth';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+// initialize Swal (sweet alert)
+const MySwal = withReactContent(Swal);
 
 // initialize firebase
 initializeFirebase();
@@ -29,6 +35,24 @@ const useFirebase = () => {
 	const githubProvider = new GithubAuthProvider();
 	const twitterProvider = new TwitterAuthProvider();
 	const facebookProvider = new FacebookAuthProvider();
+
+  // prepare auth error message
+  const prepareAuthErrorMessage = error => {
+    const errorCode = error.code;
+    const errorText = errorCode.slice(5).replace(/-/g, ' ');
+		MySwal.fire({
+			icon: 'error',
+			title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Error!</span>`,
+			html: `<p class="text-sm text-red-500">${errorText}</p>`,
+			confirmButtonText: `OK`,
+			buttonsStyling: false,
+			customClass: {
+				confirmButton: 'btn-regular py-2',
+			},
+		});
+    // console.log(errorText);
+    return errorText;
+  }
 
 	// register user with email and password
 	const registerWithEmail = (name, email, password, location, history) => {
@@ -56,8 +80,18 @@ const useFirebase = () => {
 				history.replace(redirect_url);
 			})
 			.catch(error => {
-				console.log(error);
+				// const errorText = prepareAuthErrorMessage(error);
 				setAuthError(error.message);
+				MySwal.fire({
+					icon: 'error',
+					title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Error!</span>`,
+					html: `<p class="text-sm text-red-500">${error.message}</p>`,
+					confirmButtonText: `OK`,
+					buttonsStyling: false,
+					customClass: {
+						confirmButton: 'btn-regular py-2',
+					},
+				});
 			})
 			.finally(() => setIsLoading(false));
 	};
@@ -77,6 +111,42 @@ const useFirebase = () => {
 				setAuthError(error.message);
 			})
 			.finally(() => setIsLoading(false));
+	};
+
+	// reset password
+	const resetPasswordWithEmail = (email) => {
+		sendPasswordResetEmail(auth, email)
+			.then(result => {
+				console.log(result);
+				setAuthError('');
+				MySwal.fire({
+					icon: 'info',
+					title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Email sent successfully!</span>`,
+					html: `<p class="text-sm">The password reset link has been sent to the given email address. Click on that link to reset your password and after that come back here to login with your new password.</p>`,
+					confirmButtonText: `OK`,
+					buttonsStyling: false,
+					customClass: {
+						confirmButton: 'btn-regular py-2',
+					},
+				});
+			})
+			.catch(error => {
+				console.log(error);
+				// prepareAuthErrorMessage(error);
+				setAuthError(prepareAuthErrorMessage(error));
+				console.log(authError);
+				// setAuthError(error.message);
+				// MySwal.fire({
+				// 	icon: 'error',
+				// 	title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Error!</span>`,
+				// 	html: `<p class="text-sm text-red-500">${error.message}</p>`,
+				// 	confirmButtonText: `OK`,
+				// 	buttonsStyling: false,
+				// 	customClass: {
+				// 		confirmButton: 'btn-regular py-2',
+				// 	},
+				// });
+			});
 	};
 
 	// sign in with social account
@@ -189,6 +259,7 @@ const useFirebase = () => {
 		signInWithGithub,
 		signInWithTwitter,
 		signInWithFacebook,
+		resetPasswordWithEmail,
 		logOut,
 		setIsLoading,
 	};

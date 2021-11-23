@@ -1,12 +1,16 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { RiAsterisk } from 'react-icons/ri';
 import useAuthContexts from '../../../hooks/useAuthContexts';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+// initialize Swal (sweet alert)
+const MySwal = withReactContent(Swal);
 
 const AddReview = () => {
 	const { user } = useAuthContexts();
-	const [success, setSuccess] = useState(false);
 
 	const {
 		register,
@@ -23,13 +27,19 @@ const AddReview = () => {
 			.then(res => {
 				// console.log(res);
 				if (res.data.insertedId) {
-					setSuccess(true);
 					reset();
+					MySwal.fire({
+						icon: 'success',
+						title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Review added successfully!</span>`,
+						confirmButtonText: `OK`,
+						buttonsStyling: false,
+						customClass: {
+							confirmButton: 'btn-regular py-2',
+						},
+					});
 				}
 			})
-			.catch(err => {
-				console.log(err);
-			});
+			.catch(err => console.log(err));
 	};
 
 	return (
@@ -106,11 +116,6 @@ const AddReview = () => {
 						<input type="submit" value="Add Review" className="btn-regular" />
 					</div>
 				</form>
-				<div className="status">
-					{success && (
-						<h5 className="mt-3 text-green-600">Review added successfully!</h5>
-					)}
-				</div>
 			</div>
 		</section>
 	);

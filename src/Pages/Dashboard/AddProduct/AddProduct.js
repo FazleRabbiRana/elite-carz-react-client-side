@@ -1,11 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { RiAsterisk } from 'react-icons/ri';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+// initialize Swal (sweet alert)
+const MySwal = withReactContent(Swal);
 
 const AddProduct = () => {
-	const [success, setSuccess] = useState(false);
-
 	// product default values
 	const defaultValues = {
 		name: 'Cayman 718',
@@ -30,20 +33,27 @@ const AddProduct = () => {
 		reset,
 		formState: { errors },
 	} = useForm({ defaultValues });
+
 	const onSubmit = data => {
 		// console.log(data);
 		axios
 			.post('https://sheltered-caverns-44637.herokuapp.com/products', data)
 			.then(res => {
-				console.log(res);
+				// console.log(res);
 				if (res.data.insertedId) {
-					setSuccess(true);
 					reset();
+					MySwal.fire({
+						icon: 'success',
+						title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Product ADDED successfully!</span>`,
+						confirmButtonText: `OK`,
+						buttonsStyling: false,
+						customClass: {
+							confirmButton: 'btn-regular py-2',
+						},
+					});
 				}
 			})
-			.catch(err => {
-				console.log(err);
-			});
+			.catch(err => console.log(err));
 	};
 
 	return (
@@ -183,19 +193,16 @@ const AddProduct = () => {
 						<input
 							type="submit"
 							value="Add Product"
-							className="btn-regular text-sm leading-none px-4 sm:px-6"
+							className="btn-regular text-sm leading-none px-4 sm:px-6 mr-4"
 						/>
 						<input
 							type="reset"
 							value="Clear fields"
-							className="btn-regular bg-my-secondary-light text-sm leading-none px-4 sm:px-6 ml-4"
+							className="btn-regular bg-my-secondary-light text-sm leading-none px-4 sm:px-6"
 						/>
 					</div>
 				</form>
 				<div className="status">
-					{success && (
-						<h5 className="mt-3 text-green-600">Product added successfully!</h5>
-					)}
 					<p className="mt-4 text-sm text-gray-400">
 						For more product info{' '}
 						<a

@@ -2,12 +2,15 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
+
+// initialize Swal (sweet alert)
+const MySwal = withReactContent(Swal);
 
 const MakeAdmin = () => {
 	const [users, setUsers] = useState([]);
 	const [processing, setProcessing] = useState(false);
-	const [success, setSuccess] = useState(false);
-	const [isRegistered, setIsRegistered] = useState(true);
 	const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
 	// load all users
@@ -23,24 +26,52 @@ const MakeAdmin = () => {
 	// process make admin
   const onSubmit = data => {
 		setProcessing(true);
-		// check registered email
+		// return if email not registered
 		const isRegisteredEmail = users.find(user => user.email === data.email);
 		if (!isRegisteredEmail) {
 			setProcessing(false);
-			setIsRegistered(false);
+			MySwal.fire({
+				icon: 'warning',
+				title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Not allowed!</span>`,
+				html: `<p class="text-sm"><span class="font-semibold">${data.email}</span> is not registered yet. Email must be registered before adding Admin role.</p>`,
+				confirmButtonText: `OK`,
+				buttonsStyling: false,
+				customClass: {
+					confirmButton: 'btn-regular py-2',
+				},
+			});
 			return;
 		}
+
 		// set admin role in database
 		const url = `https://sheltered-caverns-44637.herokuapp.com/users/admin`;
 		axios
 			.put(url, data)
 			.then(res => {
-				setIsRegistered(true);
 				if (res.data.modifiedCount) {
-					setSuccess(true);
+					MySwal.fire({
+						icon: 'success',
+						title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Successful!</span>`,
+						html: `<p class="text-sm"><span class="font-semibold">${data.email}</span> is now an ADMIN.</p>`,
+						confirmButtonText: `OK`,
+						buttonsStyling: false,
+						customClass: {
+							confirmButton: 'btn-regular py-2',
+						},
+					});
 					reset();
-				} else {
-					setSuccess(false);
+				} 
+				else {
+					MySwal.fire({
+						icon: 'info',
+						title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Action not taken</span>`,
+						html: `<p class="text-sm"><span class="font-semibold">${data.email}</span> is already set as admin.</p>`,
+						confirmButtonText: `OK`,
+						buttonsStyling: false,
+						customClass: {
+							confirmButton: 'btn-regular py-2',
+						},
+					});
 				}
 			})
 			.catch(error => console.log(error))
@@ -77,14 +108,6 @@ const MakeAdmin = () => {
 						)}
 					</div>
 				</form>
-				<div className="status">
-					{success && (
-						<h5 className="mt-3 text-green-600">Admin added successfully!</h5>
-					)}
-					{!isRegistered && (
-						<p className="mt-3 text-red-600 text-xs md:text-sm">This email is not registered yet. Email must be registered already to add Admin role.</p>
-					)}
-				</div>
 			</div>
 		</section>
 	);

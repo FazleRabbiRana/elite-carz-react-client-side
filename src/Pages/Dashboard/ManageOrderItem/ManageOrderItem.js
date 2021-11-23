@@ -1,13 +1,14 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import AOS from 'aos';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
 // initialize Swal (sweet alert)
 const MySwal = withReactContent(Swal);
 
-const ManageOrderItem = ({ order, orders, setOrders }) => {
+const ManageOrderItem = ({ order, orders, setOrders, index }) => {
 	const { name, image } = order?.orderedProduct;
 	const { register, handleSubmit } = useForm();
 	const [success, setSuccess] = useState(false);
@@ -17,9 +18,11 @@ const ManageOrderItem = ({ order, orders, setOrders }) => {
 	const onSubmit = data => {
 		// console.log(data);
 		const changedStatus = data.status;
+		// return if no option selected
 		if (changedStatus === '') {
 			return;
 		}
+		// process update/change order status
 		const updatedOrder = {...order}
 		updatedOrder.status = changedStatus;
 		const url = `https://sheltered-caverns-44637.herokuapp.com/orders/${order._id}`;
@@ -30,11 +33,13 @@ const ManageOrderItem = ({ order, orders, setOrders }) => {
 					setSuccess(true);
 					setNewStatus(changedStatus);
 					MySwal.fire({
-						type: 'success',
 						icon: 'success',
-						title: `<span class="font-medium text-xl md:text-2xl tracking-normal md:tracking-normal md:leading-relaxed">Successfully changed order status.</span>`,
+						title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Order status changed to <span class="uppercase">${changedStatus}</span>!</span>`,
+						confirmButtonText: `OK`,
 						buttonsStyling: false,
-						confirmButtonText: `<span class="btn-regular py-2">OK</span>`,
+						customClass: {
+							confirmButton: 'btn-regular py-2',
+						},
 					});
 				}
 			})
@@ -43,26 +48,59 @@ const ManageOrderItem = ({ order, orders, setOrders }) => {
 
 	// handle remove order
 	const handleRemoveOrder = id => {
-		const proceed = window.confirm('Will be removed from Database. \nProceed?');
-		const url = `https://sheltered-caverns-44637.herokuapp.com/orders/${id}`;
-		if (proceed) {
-			axios
+		MySwal.fire({
+			icon: 'warning',
+			title: 'Are you sure?',
+			html: `<span class="text-sm">You won't be able to revert this!</span>`,
+			confirmButtonText: 'Yes, delete',
+			showCancelButton: true,
+			buttonsStyling: false,
+			customClass: {
+				confirmButton: 'btn-regular bg-red-500 py-2 mr-4',
+				cancelButton: 'btn-regular py-2'
+			},
+		}).then((result) => {
+			if (result.isConfirmed) {
+				const url = `https://sheltered-caverns-44637.herokuapp.com/orders/${id}`;
+				axios
 				.delete(url)
 				.then(res => {
 					console.log(res);
 					if (res.data.deletedCount) {
 						const remaining = orders.filter(order => order._id !== id);
 						setOrders(remaining);
+						MySwal.fire({
+							icon: 'success',
+							title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Order DELETED successfully!</span>`,
+							confirmButtonText: `OK`,
+							buttonsStyling: false,
+							customClass: {
+								confirmButton: 'btn-regular py-2',
+							},
+						});
 					}
 				})
 				.catch(error => {
 					console.log(error);
 				});
-		}
+			}
+		});
 	};
 
+	// initialize aos plugin
+	useEffect(() => {
+		AOS.init();
+	}, []);
+
 	return (
-		<div className="single-order-block bg-gray-100 group md:flex md:flex-nowrap lg:max-w-screen-lg">
+		<div 
+			className="single-order-block bg-gray-100 group md:flex md:flex-nowrap lg:max-w-screen-lg"
+			data-aos="fade-up" 
+			data-aos-duration="700" 
+			data-aos-delay={`${index * 100 + 50}`}
+			data-aos-once="true"
+			data-aos-anchor-placement="top-bottom"
+		>
 			<div className="image md:flex-shrink-0 overflow-hidden md:w-32 lg:w-48 xl:w-56">
 				<img
 					src={image}

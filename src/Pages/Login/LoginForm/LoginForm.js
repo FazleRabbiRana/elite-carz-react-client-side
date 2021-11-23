@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiAsterisk, RiGoogleFill, RiGithubFill, RiTwitterFill } from 'react-icons/ri';
 import { useHistory, useLocation } from 'react-router-dom';
@@ -7,16 +7,22 @@ import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
 import AOS from 'aos';
 
 const LoginForm = () => {
-	const { loginWithEmail, signInWithGoogle, signInWithTwitter, signInWithGithub, user, isLoading, authError } = useAuthContexts();
+	const { loginWithEmail, signInWithGoogle, signInWithTwitter, signInWithGithub, resetPasswordWithEmail, user, isLoading, authError } = useAuthContexts();
 	const { register, handleSubmit, formState: { errors } } = useForm();
 	const location = useLocation();
 	const history = useHistory();
+	const [enteredLoginEmail, setEnteredLoginEmail] = useState('');
 
-	// register form submit
+	// login form submit
 	const onSubmit = data => {
 		// console.log(data);
 		loginWithEmail(data.loginEmail, data.loginPassword, location, history);
 	};
+
+	// handle password reset
+	const handlePasswordReset = () => {
+		resetPasswordWithEmail(enteredLoginEmail)
+	}
 
 	// initialize aos plugin
 	useEffect(() => {
@@ -41,7 +47,10 @@ const LoginForm = () => {
 						type="email"
 						className="form-field"
 						placeholder="Your email address"
-						{...register('loginEmail', { required: true })} 
+						{...register('loginEmail', { 
+							required: true, 
+							onBlur: (e) => setEnteredLoginEmail(e.target.value), 
+						})}
 					/>
 				</div>
 				<div>
@@ -54,6 +63,17 @@ const LoginForm = () => {
 						placeholder="Your password"
 						{...register('loginPassword', { required: true })} 
 					/>
+					<p className="text-my-sm text-gray-400 mt-2">
+						Forgot password?{' '}
+						<button 
+							onClick={e => {
+								e.preventDefault();
+								resetPasswordWithEmail(enteredLoginEmail)
+							}} 
+							className="text-blue-500 hover:text-blue-700">
+							Reset now
+						</button>
+					</p>
 				</div>
 				<div>
 					{(errors.loginEmail ||
@@ -69,14 +89,20 @@ const LoginForm = () => {
 				</div>
 			</form>
 
+			<div>
+			<p className="text-my-sm leading-relaxed text-gray-400 mt-3">
+				<b>Hints:</b> Use "<span className="font-semibold">admin@admin.com</span>" and "<span className="font-semibold">1234567X</span>" to login as an Admin.
+			</p>
+			</div>
+
 			<div className="status">
 				{user?.email && <h5 className="mt-3 text-green-600">Logged in successfully!</h5>}
-				{authError && <h5 className="mt-3 text-red-600">{authError}</h5>}
+				{/* {authError && <h5 className="mt-3 text-red-600">{authError}</h5>} */}
 			</div>
 
 			<div className="divider mt-5 mb-3 flex flex-nowrap items-center font-my-title uppercase font-semibold text-true-gray-800">
 				<hr className="flex-auto border-my-primary border-dashed" />
-				<span className="px-3">Or use</span>
+				<span className="px-3">Or use the below to</span>
 				<hr className="flex-auto border-my-primary border-dashed" />
 			</div>
 
