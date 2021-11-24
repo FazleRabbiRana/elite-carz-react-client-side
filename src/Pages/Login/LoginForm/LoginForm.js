@@ -3,11 +3,10 @@ import { useForm } from 'react-hook-form';
 import { RiAsterisk, RiGoogleFill, RiGithubFill, RiTwitterFill } from 'react-icons/ri';
 import { useHistory, useLocation } from 'react-router-dom';
 import useAuthContexts from '../../../hooks/useAuthContexts';
-import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
 import AOS from 'aos';
 
 const LoginForm = () => {
-	const { loginWithEmail, signInWithGoogle, signInWithTwitter, signInWithGithub, resetPasswordWithEmail, user, isLoading, authError } = useAuthContexts();
+	const { loginWithEmail, signInWithGoogle, signInWithTwitter, signInWithGithub, resetPasswordWithEmail, user } = useAuthContexts();
 	const { register, handleSubmit, formState: { errors } } = useForm();
 	const location = useLocation();
 	const history = useHistory();
@@ -18,11 +17,6 @@ const LoginForm = () => {
 		// console.log(data);
 		loginWithEmail(data.loginEmail, data.loginPassword, location, history);
 	};
-
-	// handle password reset
-	const handlePasswordReset = () => {
-		resetPasswordWithEmail(enteredLoginEmail)
-	}
 
 	// initialize aos plugin
 	useEffect(() => {
@@ -40,74 +34,74 @@ const LoginForm = () => {
 			</h3>
 			<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4">
 				<div>
-					<label className="block mb-1">
-						Email address <RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
+					<label className="block mb-1 tracking-normal">
+						Email address{' '}
+						<RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
 					</label>
-					<input 
+					<input
 						type="email"
 						className="form-field"
 						placeholder="Your email address"
-						{...register('loginEmail', { 
-							required: true, 
-							onBlur: (e) => setEnteredLoginEmail(e.target.value), 
+						{...register('loginEmail', {
+							required: true,
+							onBlur: e => setEnteredLoginEmail(e.target.value),
 						})}
 					/>
 				</div>
 				<div>
-					<label className="block mb-1">
-						Password <RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
+					<label className="block mb-1 tracking-normal">
+						Password{' '}
+						<RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
 					</label>
-					<input 
+					<input
 						type="password"
 						className="form-field"
 						placeholder="Your password"
-						{...register('loginPassword', { required: true })} 
+						{...register('loginPassword', { required: true })}
 					/>
-					<p className="text-my-sm text-gray-400 mt-2">
+					<p className="text-my-sm leading-relaxed text-gray-400 mt-2">
 						Forgot password?{' '}
-						<button 
+						<button
 							onClick={e => {
 								e.preventDefault();
-								resetPasswordWithEmail(enteredLoginEmail)
-							}} 
-							className="text-blue-500 hover:text-blue-700">
+								resetPasswordWithEmail(enteredLoginEmail);
+							}}
+							className="text-blue-500 hover:text-blue-700"
+						>
 							Reset now
 						</button>
 					</p>
 				</div>
+
 				<div>
-					{(errors.loginEmail ||
-						errors.loginPassword) && (
-						<p className="text-sm text-red-600 leading-loose">
-							Please fill up the form properly.
-						</p>
+					{(errors.loginEmail || errors.loginPassword) && (
+						<p className="text-sm text-red-600 leading-loose">Please fill up the form properly.</p>
 					)}
 					<div className="flex items-start space-x-4">
 						{!user?.email && <input type="submit" className="btn-regular" value="Login" />}
-						{isLoading && <LoadingStatus />}
 					</div>
 				</div>
 			</form>
 
-			<div>
-			<p className="text-my-sm leading-relaxed text-gray-400 mt-3">
-				<b>Hints:</b> Use "<span className="font-semibold">admin@admin.com</span>" and "<span className="font-semibold">1234567X</span>" to login as an Admin.
-			</p>
+			<div className="hints text-my-sm leading-relaxed text-gray-400 mt-3">
+				<b>Hints:</b> Use "<span className="font-semibold">admin@admin.com</span>" and "
+				<span className="font-semibold tracking-wider">ASdf43!2</span>" to login as an Admin.
 			</div>
 
 			<div className="status">
-				{user?.email && <h5 className="mt-3 text-green-600">Logged in successfully!</h5>}
-				{/* {authError && <h5 className="mt-3 text-red-600">{authError}</h5>} */}
+				{user?.email && (
+					<h5 className="mt-3 text-green-600">Currently logged in with {user?.email}</h5>
+				)}
 			</div>
 
 			<div className="divider mt-5 mb-3 flex flex-nowrap items-center font-my-title uppercase font-semibold text-true-gray-800">
 				<hr className="flex-auto border-my-primary border-dashed" />
-				<span className="px-3">Or use the below to</span>
+				<span className="px-3">Or use any of these</span>
 				<hr className="flex-auto border-my-primary border-dashed" />
 			</div>
 
 			<div className="direct-sign-in-options space-y-4">
-				<button 
+				<button
 					onClick={() => signInWithGoogle(location, history)}
 					className="btn-social-login bg-my-google"
 					data-aos="fade-up"
@@ -119,7 +113,7 @@ const LoginForm = () => {
 					</span>
 					<span className="flex-auto">Login with Google</span>
 				</button>
-				<button 
+				<button
 					onClick={() => signInWithGithub(location, history)}
 					className="btn-social-login bg-my-github"
 					data-aos="fade-up"
@@ -131,7 +125,7 @@ const LoginForm = () => {
 					</span>
 					<span className="flex-auto">Login with GitHub</span>
 				</button>
-				<button 
+				<button
 					onClick={() => signInWithTwitter(location, history)}
 					className="btn-social-login bg-my-twitter"
 					data-aos="fade-up"

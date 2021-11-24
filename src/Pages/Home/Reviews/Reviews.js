@@ -110,7 +110,7 @@ const Reviews = () => {
 										alt="Avatar" 
 										className="w-32 h-32 mx-auto rounded-full border-8 border-gray-700"
 									/>
-									<p className="mt-6 mb-4 text-gray-100 lg:text-lg leading-relaxed lg:leading-loose">
+									<p className="mt-6 mb-4 text-white lg:text-lg leading-relaxed lg:leading-loose">
 										{review?.review}
 									</p>
 									<div className="rating-stars inline-block p-0 relative text-3xl">

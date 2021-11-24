@@ -36,23 +36,27 @@ const useFirebase = () => {
 	const twitterProvider = new TwitterAuthProvider();
 	const facebookProvider = new FacebookAuthProvider();
 
-  // prepare auth error message
-  const prepareAuthErrorMessage = error => {
+  // process auth error message
+  const processAuthErrorMessage = error => {
     const errorCode = error.code;
-    const errorText = errorCode.slice(5).replace(/-/g, ' ');
+    const errorMessage = errorCode.slice(5).replace(/-/g, ' ');
+    // console.log(errorMessage);
+    return errorMessage;
+  };
+
+	// show popup message
+	const showPopupMessage = (type = 'success', title, message) => {
 		MySwal.fire({
-			icon: 'error',
-			title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Error!</span>`,
-			html: `<p class="text-sm text-red-500">${errorText}</p>`,
+			icon: type,
+			title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">${title}</span>`,
+			html: `<p class="text-sm">${message}</p>`,
 			confirmButtonText: `OK`,
 			buttonsStyling: false,
 			customClass: {
 				confirmButton: 'btn-regular py-2',
 			},
-		});
-    // console.log(errorText);
-    return errorText;
-  }
+		})
+	};
 
 	// register user with email and password
 	const registerWithEmail = (name, email, password, location, history) => {
@@ -68,30 +72,24 @@ const useFirebase = () => {
 					displayName: name,
 				})
 					.then(() => {
-						console.log('Profile updated in Firebase.');
+						console.log('Profile updated in f-auth.');
 					})
-					.catch(error => {
-						console.log(error);
-					});
+					.catch(error => console.log(error));
 				// add user to database
 				saveUserToDatabase(email, name, 'POST');
+				// show success popup
+				const popupTitle = `<span class="text-green-600">Registered successfully!</span>`;
+				const popupMessage = `With <span class="font-semibold">${email}</span>`;
+				showPopupMessage('success', popupTitle, popupMessage);
 				// return to prev page
 				const redirect_url = location?.state?.from || '/dashboard';
 				history.replace(redirect_url);
 			})
 			.catch(error => {
-				// const errorText = prepareAuthErrorMessage(error);
-				setAuthError(error.message);
-				MySwal.fire({
-					icon: 'error',
-					title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Error!</span>`,
-					html: `<p class="text-sm text-red-500">${error.message}</p>`,
-					confirmButtonText: `OK`,
-					buttonsStyling: false,
-					customClass: {
-						confirmButton: 'btn-regular py-2',
-					},
-				});
+				const errorText = processAuthErrorMessage(error);
+				const popupMessage = `<span class="text-red-600">${errorText}</span>`;
+				setAuthError(errorText);
+				showPopupMessage('error', 'Error!', popupMessage);
 			})
 			.finally(() => setIsLoading(false));
 	};
@@ -102,51 +100,40 @@ const useFirebase = () => {
 		signInWithEmailAndPassword(auth, email, password)
 			.then(result => {
 				setAuthError('');
+				// show success popup
+				const popupTitle = `<span class="text-green-600">Logged in successfully!</span>`;
+				const popupMessage = `With <span class="font-semibold">${result.user.email}</span>`;
+				showPopupMessage('success', popupTitle, popupMessage);
 				// return to prev page
 				const redirect_url = location?.state?.from || '/dashboard';
 				history.replace(redirect_url);
 			})
 			.catch(error => {
-				console.log(error);
-				setAuthError(error.message);
+				const errorText = processAuthErrorMessage(error);
+				const popupMessage = `<span class="text-red-600">${errorText}</span>`;
+				setAuthError(errorText);
+				showPopupMessage('error', 'Error!', popupMessage);
 			})
 			.finally(() => setIsLoading(false));
 	};
 
 	// reset password
 	const resetPasswordWithEmail = (email) => {
+		setIsLoading(true);
 		sendPasswordResetEmail(auth, email)
-			.then(result => {
-				console.log(result);
+			.then(() => {
 				setAuthError('');
-				MySwal.fire({
-					icon: 'info',
-					title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Email sent successfully!</span>`,
-					html: `<p class="text-sm">The password reset link has been sent to the given email address. Click on that link to reset your password and after that come back here to login with your new password.</p>`,
-					confirmButtonText: `OK`,
-					buttonsStyling: false,
-					customClass: {
-						confirmButton: 'btn-regular py-2',
-					},
-				});
+				const popupMessage = `<span class="text-my-sm">The password reset link has been sent to the given email address. Click on that link to reset your password and after that come back here to login with your new password.</span>`;
+				showPopupMessage('success', 'Rest link sent!', popupMessage);
 			})
 			.catch(error => {
 				console.log(error);
-				// prepareAuthErrorMessage(error);
-				setAuthError(prepareAuthErrorMessage(error));
-				console.log(authError);
-				// setAuthError(error.message);
-				// MySwal.fire({
-				// 	icon: 'error',
-				// 	title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Error!</span>`,
-				// 	html: `<p class="text-sm text-red-500">${error.message}</p>`,
-				// 	confirmButtonText: `OK`,
-				// 	buttonsStyling: false,
-				// 	customClass: {
-				// 		confirmButton: 'btn-regular py-2',
-				// 	},
-				// });
-			});
+				const errorText = processAuthErrorMessage(error);
+				const popupMessage = `<span class="text-red-600">${errorText}</span>`;
+				setAuthError(errorText);
+				showPopupMessage('error', 'Error!', popupMessage);
+			})
+			.finally(() => setIsLoading(false));
 	};
 
 	// sign in with social account
@@ -165,7 +152,10 @@ const useFirebase = () => {
 			})
 			.catch(error => {
 				console.log(error);
-				setAuthError(error.message);
+				const errorText = processAuthErrorMessage(error);
+				const popupMessage = `<span class="text-red-600">${errorText}</span>`;
+				setAuthError(errorText);
+				showPopupMessage('error', 'Error!', popupMessage);
 			})
 			.finally(() => setIsLoading(false));
 	}

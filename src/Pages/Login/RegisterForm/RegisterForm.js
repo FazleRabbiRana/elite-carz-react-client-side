@@ -1,21 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { RiAsterisk } from 'react-icons/ri';
-import { useHistory, useLocation } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import useAuthContexts from '../../../hooks/useAuthContexts';
-import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
 
 const RegisterForm = () => {
-	const { user, registerWithEmail, isLoading } = useAuthContexts();
+	const { user, registerWithEmail } = useAuthContexts();
+	const { register, handleSubmit, getValues, formState: { errors } } = useForm();
 	const location = useLocation();
 	const history = useHistory();
-
-	const {
-		register,
-		handleSubmit,
-		getValues,
-		formState: { errors },
-	} = useForm();
 
 	// register form submit
 	const onSubmit = data => {
@@ -29,6 +22,12 @@ const RegisterForm = () => {
 		);
 	};
 
+	// required password regular expression
+	const passRegex = /^(?=.*[A-Z].*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9]).{8,}$/;
+
+	// required field mark
+	const requiredMark = <RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />;
+
 	return (
 		<div className="register-form-wrapper">
 			<h3 className="uppercase text-2xl mb-4 text-center">
@@ -39,9 +38,8 @@ const RegisterForm = () => {
 				className="flex flex-col space-y-4"
 			>
 				<div>
-					<label className="block mb-1">
-						Full name{' '}
-						<RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
+					<label className="block mb-1 tracking-normal">
+						Full name {requiredMark}
 					</label>
 					<input
 						className="form-field"
@@ -50,9 +48,8 @@ const RegisterForm = () => {
 					/>
 				</div>
 				<div>
-					<label className="block mb-1">
-						Email address{' '}
-						<RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
+					<label className="block mb-1 tracking-normal">
+						Email address {requiredMark}
 					</label>
 					<input
 						type="email"
@@ -62,21 +59,22 @@ const RegisterForm = () => {
 					/>
 				</div>
 				<div>
-					<label className="block mb-1">
-						Password{' '}
-						<RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
+					<label className="block mb-1 tracking-normal">
+						Password {requiredMark}
 					</label>
 					<input
 						type="password"
 						className="form-field"
-						placeholder="Min 6 characters"
-						{...register('regPassword', { required: true, minLength: 6 })}
+						placeholder="********"
+						{...register('regPassword', { required: true, pattern: passRegex })}
 					/>
+					<p className="text-my-sm leading-normal text-gray-400 mt-2">
+						<b>Password requirement:</b> At least 8 chars long, contain at least one special character (!@#$&*), two numerals (0-9) and three letters (two in UPPERCASE). No spaces and emoji.
+					</p>
 				</div>
 				<div>
-					<label className="block mb-1">
-						Confirm password{' '}
-						<RiAsterisk className="inline text-my-xs text-red-500 transform -translate-y-1" />
+					<label className="block mb-1 tracking-normal">
+						Confirm password {requiredMark}
 					</label>
 					<input
 						type="password"
@@ -99,7 +97,7 @@ const RegisterForm = () => {
 					)}
 				</div>
 				{/* <div>
-					<label className="block mb-1">Gender</label>
+					<label className="block mb-1 tracking-normal">Gender</label>
 					<select
 						className="form-field"
 						{...register('gender')}
@@ -108,18 +106,28 @@ const RegisterForm = () => {
 						<option value="female">Female</option>
 					</select>
 				</div> */}
+				<div className="flex items-center gap-2">
+					<input
+						type="checkbox"
+						className="h-4 w-4"
+						{...register('agreeTerms', { required: true })}
+					/>
+					<label className="block mb-1 tracking-normal leading-none">
+						Agree to the <Link to="/terms-conditions" className="text-blue-500 hover:text-blue-700">Terms and Conditions</Link> {requiredMark}
+					</label>
+				</div>
 				<div>
 					{(errors.displayName ||
 						errors.email ||
 						errors.regPassword ||
-						errors.confirmPassword) && (
+						errors.confirmPassword ||
+						errors.agreeTerms) && (
 						<p className="text-sm text-red-600 leading-loose">
 							Please fill up the form properly.
 						</p>
 					)}
 					<div className="flex items-start space-x-4">
-						{(!user?.email && !isLoading) && <input type="submit" className="btn-regular" value="Register" />}
-						{isLoading && <LoadingStatus />}
+						{!user?.email && <input type="submit" className="btn-regular" value="Register" />}
 					</div>
 				</div>
 			</form>
