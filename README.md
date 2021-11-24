@@ -9,12 +9,12 @@ Here is a brief about this project:
 - Dynamic server side on Heroku
 - Admin Dashboard to manage, e.g. `products`, `orders`, `users`
 - Multiple authentication system with Firebase
-	- ![Twitter URL](https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2F)
-	- ![GitHub URL](https://img.shields.io/github/url?label=GitHub&style=social&url=https%3A%2F%2Fgithub.com%2F)
+	<!-- - ![Twitter URL](https://img.shields.io/twitter/url?label=Twitter&style=social&url=https%3A%2F%2Ftwitter.com%2F)
+	- ![GitHub URL](https://img.shields.io/github/url?label=GitHub&style=social&url=https%3A%2F%2Fgithub.com%2F) -->
 	- ![image](https://img.shields.io/badge/Email%20&%20Password-FFC905?style=for-the-badge&logo=openAccess&logoColor=white)
 	- ![image](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)
-	- ![image](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)
 	- ![image](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+	- ![image](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)
 - Organized, well-commented codes
 - Clean, cool and elegant design
 - Niche website (single product category selling website)
