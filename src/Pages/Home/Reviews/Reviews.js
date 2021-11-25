@@ -7,6 +7,7 @@ import unknownAvatar from '../../../images/avatar-gender-unknown.png';
 import car from '../../../images/bg/bg-4.png';
 import reviewBg from '../../../images/bg/bg-7.jpg';
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri';
+import AOS from 'aos';
 
 const Reviews = () => {
 	const [reviews, setReviews] = useState([]);
@@ -24,6 +25,9 @@ const Reviews = () => {
 			.catch(error => {
 				console.log(error);
 			});
+		
+		// initialize AOS plugin
+		AOS.init();
 	}, []);
 
 	// reviews slider settings
@@ -75,6 +79,7 @@ const Reviews = () => {
 			<div
 				style={{ backgroundImage: `url(${reviewBg})` }}
 				className="bg-no-repeat bg-cover bg-center bg-gray-900 bg-opacity-80 bg-blend-overlay pt-16 pb-14 md:pb-24 lg:pb-44"
+				id="review_bg_wrapper"
 			>
 				<div className="container max-w-3xl text-center">
 					<div className="text-center mb-12">
@@ -142,6 +147,12 @@ const Reviews = () => {
 					src={car}
 					alt="Red elegant car"
 					className="mx-auto max-w-clear w-3/4 md:w-1/2 lg:w-auto -mt-12 md:-mt-20 lg:-mt-36"
+					data-aos="zoom-in" 
+					data-aos-duration="500" 
+					data-aos-delay="50"
+					data-aos-once="false"
+					data-aos-anchor="#review_bg_wrapper"
+					data-aos-anchor-placement="bottom-bottom"
 				/>
 			</div>
 		</section>
