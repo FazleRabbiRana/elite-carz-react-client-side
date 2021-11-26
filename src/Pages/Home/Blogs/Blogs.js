@@ -2,22 +2,24 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import BlogCard from '../../Shared/BlogCard/BlogCard';
 import blogBg from '../../../images/bg/bg-3.jpg';
+import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
 
 const Blogs = () => {
 	const [blogs, setBlogs] = useState([]);
+	const [isBlogsLoading, setIsBlogsLoading] = useState(false);
 	const homeBlogs = blogs.slice(0, 3);
 
 	// load all blogs
 	useEffect(() => {
+		setIsBlogsLoading(true);
 		axios
 			.get('https://sheltered-caverns-44637.herokuapp.com/blogs')
 			.then(res => {
 				// console.log(res.data);
 				setBlogs(res.data);
 			})
-			.catch(error => {
-				console.log(error);
-			});
+			.catch(error => console.log(error))
+			.finally(() => setIsBlogsLoading(false));
 	}, []);
 
 	// blog section bg
@@ -32,6 +34,7 @@ const Blogs = () => {
 					<p className="uppercase font-medium text-white font-my-title text-sm tracking-widest mb-2 md:mb-3">Articles from blog</p>
 					<h2 className="text-my-primary text-4xl">Read Our Articles</h2>
 				</div>
+				{isBlogsLoading && <LoadingStatus />}
 				<div className="blogs-wrapper grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-12 sm:gap-x-6 xl:gap-x-10">
 					{
 						homeBlogs.map((blog, index) => <BlogCard key={blog._id} blog={blog} index={index} />)
