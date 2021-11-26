@@ -1,16 +1,18 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { RiAsterisk } from 'react-icons/ri';
 import useAuthContexts from '../../../hooks/useAuthContexts';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
 
 // initialize Swal (sweet alert)
 const MySwal = withReactContent(Swal);
 
 const AddReview = () => {
 	const { user } = useAuthContexts();
+	const [adding, setAdding] = useState(false);
 
 	const {
 		register,
@@ -22,6 +24,7 @@ const AddReview = () => {
 	// add review
 	const onSubmit = data => {
 		// console.log(data);
+		setAdding(true);
 		if (data.userImg) {
 			data.userImg = user?.photoURL ? user?.photoURL : null;
 		} else {
@@ -45,7 +48,8 @@ const AddReview = () => {
 					});
 				}
 			})
-			.catch(err => console.log(err));
+			.catch(err => console.log(err))
+			.finally(() => setAdding(false));
 	};
 
 	// required field mark
@@ -57,14 +61,9 @@ const AddReview = () => {
 				Add Review
 			</h3>
 			<div className="max-w-md">
-				<form
-					onSubmit={handleSubmit(onSubmit)}
-					className="flex flex-col space-y-4"
-				>
+				<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4">
 					<div>
-						<label className="block mb-1">
-							Full name {requiredMark}
-						</label>
+						<label className="block mb-1">Full name {requiredMark}</label>
 						<input
 							className="form-field"
 							placeholder="e.g. Abu Dujana"
@@ -73,9 +72,7 @@ const AddReview = () => {
 						/>
 					</div>
 					<div>
-						<label className="block mb-1">
-							Your review {requiredMark}
-						</label>
+						<label className="block mb-1">Your review {requiredMark}</label>
 						<textarea
 							{...register('review', { required: true })}
 							className="form-field h-32 py-2"
@@ -96,9 +93,7 @@ const AddReview = () => {
 						</select>
 					</div>
 					<div>
-						<label className="block mb-1">
-							Country name {requiredMark}
-						</label>
+						<label className="block mb-1">Country name {requiredMark}</label>
 						<input
 							className="form-field"
 							placeholder="e.g. USA"
@@ -107,23 +102,16 @@ const AddReview = () => {
 					</div>
 					<div>
 						<label className="block mb-1">Gender</label>
-						<select 
-							className="form-field" 
-							{...register('gender')}
-							defaultValue=""
-						>
-							<option value="" disabled hidden>Select</option>
+						<select className="form-field" {...register('gender')} defaultValue="">
+							<option value="" disabled hidden>
+								Select
+							</option>
 							<option value="male">Male</option>
 							<option value="female">Female</option>
 						</select>
 					</div>
 					<div className="flex items-center gap-2">
-						<input
-							type="checkbox"
-							defaultChecked
-							className="h-4 w-4"
-							{...register('userImg')}
-						/>
+						<input type="checkbox" defaultChecked className="h-4 w-4" {...register('userImg')} />
 						<label className="block mb-1 tracking-normal leading-none">
 							Include profile image if available.
 						</label>
@@ -134,7 +122,14 @@ const AddReview = () => {
 								Please fill up the form properly.
 							</p>
 						)}
-						<input type="submit" value="Add Review" className="btn-regular" />
+						{!adding ? (
+							<input type="submit" value="Add Review" className="btn-regular" />
+						) : (
+							<div className="inline-block">
+								<LoadingStatus />
+							</div>
+						)}
+						{/* <input type="submit" value="Add Review" className="btn-regular" /> */}
 					</div>
 				</form>
 			</div>

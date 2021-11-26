@@ -8,12 +8,15 @@ import car from '../../../images/bg/bg-4.png';
 import reviewBg from '../../../images/bg/bg-7.jpg';
 import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri';
 import AOS from 'aos';
+import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
 
 const Reviews = () => {
 	const [reviews, setReviews] = useState([]);
+	const [isReviewsLoading, setIsReviewsLoading] = useState(false);
 
 	// load all reviews
 	useEffect(() => {
+		setIsReviewsLoading(true);
 		axios
 			.get('https://sheltered-caverns-44637.herokuapp.com/reviews')
 			.then(res => {
@@ -24,9 +27,8 @@ const Reviews = () => {
 				// console.log(mixedReviews);
 				setReviews(mixedReviews);
 			})
-			.catch(error => {
-				console.log(error);
-			});
+			.catch(error => console.log(error))
+			.finally(() => setIsReviewsLoading(false));
 		
 		// initialize AOS plugin
 		AOS.init();
@@ -90,6 +92,7 @@ const Reviews = () => {
 						</p>
 						<h2 className="text-my-primary text-4xl">What They Say</h2>
 					</div>
+					{isReviewsLoading && <LoadingStatus />}
 					<div className="relative">
 						<div className="slick-custom-arrows z-30 absolute bottom-7 w-full flex items-center justify-center space-x-4 text-4xl">
 							<button
@@ -131,7 +134,7 @@ const Reviews = () => {
 											<span className="star">★★★★★</span>
 										</div>
 									</div>
-									<h3 className="mt-2 text-white">
+									<h3 className="mt-2 text-white text-lg">
 										<span className="inline-block text-2xl">
 											{review?.userName}
 										</span>
@@ -152,7 +155,7 @@ const Reviews = () => {
 					data-aos="zoom-in" 
 					data-aos-duration="500" 
 					data-aos-delay="50"
-					data-aos-once="false"
+					data-aos-once="true"
 					data-aos-anchor="#review_bg_wrapper"
 					data-aos-anchor-placement="bottom-bottom"
 				/>
