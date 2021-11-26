@@ -20,7 +20,9 @@ const Reviews = () => {
 				// console.log(res.data);
 				const allReviews = res.data;
 				const reversed = [...allReviews].reverse();
-				setReviews(reversed);
+				const mixedReviews = allReviews.length <= 10 ? reversed : [...reversed.slice(0, 5)].concat(allReviews.slice(0, 5).reverse());
+				// console.log(mixedReviews);
+				setReviews(mixedReviews);
 			})
 			.catch(error => {
 				console.log(error);
@@ -64,7 +66,7 @@ const Reviews = () => {
 
 	// set avatar fake image
 	const setAvatarImg = gender => {
-		const value = gender.toLowerCase();
+		const value = gender && gender.toLowerCase();
 		let src = unknownAvatar;
 		if (value === 'male') {
 			src = maleAvatar;
@@ -111,7 +113,7 @@ const Reviews = () => {
 							{reviews.map(review => (
 								<div key={review._id} className="single-slide">
 									<img 
-										src={setAvatarImg(review?.gender)} 
+										src={review?.userImg ? review?.userImg : setAvatarImg(review?.gender)} 
 										alt="Avatar" 
 										className="w-32 h-32 mx-auto rounded-full border-8 border-gray-700"
 									/>

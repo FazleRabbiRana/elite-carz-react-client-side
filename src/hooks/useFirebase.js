@@ -99,6 +99,7 @@ const useFirebase = () => {
 		setIsLoading(true);
 		signInWithEmailAndPassword(auth, email, password)
 			.then(result => {
+				// console.log(result);
 				setAuthError('');
 				// show success popup
 				const popupTitle = `<span class="text-green-600">Logged in successfully!</span>`;
