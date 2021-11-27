@@ -6,7 +6,7 @@ import femaleAvatar from '../../../images/avatar-female.png';
 import unknownAvatar from '../../../images/avatar-gender-unknown.png';
 import car from '../../../images/bg/bg-4.png';
 import reviewBg from '../../../images/bg/bg-7.jpg';
-import { RiArrowRightSLine, RiArrowLeftSLine } from 'react-icons/ri';
+import { RiArrowRightSLine, RiArrowLeftSLine, RiStarSFill } from 'react-icons/ri';
 import AOS from 'aos';
 import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
 
@@ -42,7 +42,7 @@ const Reviews = () => {
 		slidesToShow: 1,
 		slidesToScroll: 1,
 		speed: 400,
-		autoplay: true,
+		autoplay: false,
 		autoplaySpeed: 7000,
 		cssEase: 'linear',
 		pauseOnHover: true,
@@ -123,15 +123,16 @@ const Reviews = () => {
 									<p className="mt-6 mb-4 text-white lg:text-lg leading-relaxed lg:leading-loose">
 										{review?.review}
 									</p>
-									<div className="rating-stars inline-block p-0 relative text-3xl">
-										<div className="empty-rating m-0 p-0 leading-none z-0">
-											<span className="star">★★★★★</span>
+									<div className="rating-stars inline-block p-0 relative text-3xl text-gray-200">
+										<div className="empty-rating flex flex-nowrap m-0 p-0 leading-none z-0">
+											{[...Array(5).keys()].map((star) => <span key={star + ' '} className="star"><RiStarSFill /></span>)}
+											{/* <span className="star">★★★★★</span> */}
 										</div>
 										<div
-											className="fill-rating m-0 p-0 leading-none z-pos1 text-my-primary overflow-hidden absolute top-0 left-0"
+											className="fill-rating flex flex-nowrap m-0 p-0 leading-none z-pos1 text-my-primary overflow-hidden absolute top-0 left-0"
 											style={{ width: `${review?.rating * 20 + '%'}` }}
 										>
-											<span className="star">★★★★★</span>
+											{[...Array(5).keys()].map((star) => <span key={star + ' '} className="star"><RiStarSFill /></span>)}
 										</div>
 									</div>
 									<h3 className="mt-2 text-white text-lg">
