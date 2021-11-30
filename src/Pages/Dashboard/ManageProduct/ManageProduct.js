@@ -22,19 +22,19 @@ const ManageProduct = ({ product, products, setProducts, index }) => {
 	// handle remove product
 	const handleRemoveProduct = id => {
 		// check if within base products
-		// if (index < 10) {
-		// 	MySwal.fire({
-		// 		icon: 'warning',
-		// 		title: `Not allowed!`,
-		// 		html: `<p class="text-sm">Sorry, this product can't be deleted. Base product.</p>`,
-		// 		confirmButtonText: `OK`,
-		// 		buttonsStyling: false,
-		// 		customClass: {
-		// 			confirmButton: 'btn-regular py-2',
-		// 		},
-		// 	});
-		// 	return;
-		// }
+		if (index < 10) {
+			MySwal.fire({
+				icon: 'warning',
+				title: `Not allowed!`,
+				html: `<p class="text-sm">Sorry, this product can't be deleted. Base product.</p>`,
+				confirmButtonText: `OK`,
+				buttonsStyling: false,
+				customClass: {
+					confirmButton: 'btn-regular py-2',
+				},
+			});
+			return;
+		}
 
 		// check if minimum products number reached
 		if (!isEnoughProducts) {

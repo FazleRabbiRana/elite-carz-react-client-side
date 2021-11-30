@@ -36,24 +36,35 @@ const AddProduct = () => {
 
 	const onSubmit = data => {
 		// console.log(data);
-		axios
-			.post('https://sheltered-caverns-44637.herokuapp.com/products', data)
-			.then(res => {
-				// console.log(res);
-				if (res.data.insertedId) {
-					reset();
-					MySwal.fire({
-						icon: 'success',
-						title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Product ADDED successfully!</span>`,
-						confirmButtonText: `OK`,
-						buttonsStyling: false,
-						customClass: {
-							confirmButton: 'btn-regular py-2',
-						},
-					});
-				}
-			})
-			.catch(err => console.log(err));
+		// axios
+		// 	.post('https://sheltered-caverns-44637.herokuapp.com/products', data)
+		// 	.then(res => {
+		// 		// console.log(res);
+		// 		if (res.data.insertedId) {
+		// 			reset();
+		// 			MySwal.fire({
+		// 				icon: 'success',
+		// 				title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Product ADDED successfully!</span>`,
+		// 				confirmButtonText: `OK`,
+		// 				buttonsStyling: false,
+		// 				customClass: {
+		// 					confirmButton: 'btn-regular py-2',
+		// 				},
+		// 			});
+		// 		}
+		// 	})
+		// 	.catch(err => console.log(err));
+
+		MySwal.fire({
+			icon: 'warning',
+			title: ``,
+			html: `<span class="inline-block font-medium text-sm">For security purpose add product system is disabled currently.</span>`,
+			confirmButtonText: `OK`,
+			buttonsStyling: false,
+			customClass: {
+				confirmButton: 'btn-regular py-2',
+			},
+		});
 	};
 
 	return (
@@ -203,7 +214,10 @@ const AddProduct = () => {
 					</div>
 				</form>
 				<div className="status">
-					<p className="mt-4 text-sm text-gray-400">
+					<p className="mt-4 text-sm text-gray-400 text-my-primary-dark">
+						For security purpose add product system is disabled currently.{' '}
+					</p>
+					{/* <p className="mt-4 text-sm text-gray-400">
 						For more product info{' '}
 						<a
 							href="https://github.com/FazleRabbiRana?tab=repositories"
@@ -213,7 +227,7 @@ const AddProduct = () => {
 						>
 							Click here
 						</a>
-					</p>
+					</p> */}
 				</div>
 			</div>
 		</section>

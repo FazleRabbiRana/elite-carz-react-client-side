@@ -48,6 +48,20 @@ const ManageOrderItem = ({ order, orders, setOrders, index }) => {
 
 	// handle remove order
 	const handleRemoveOrder = id => {
+		if (orders.length < 3) {
+			MySwal.fire({
+				icon: 'warning',
+				title: `Not allowed!`,
+				html: `<p class="text-sm">For demo purpose order can't be removed when less then 3 orders remaining.</p>`,
+				confirmButtonText: `OK`,
+				buttonsStyling: false,
+				customClass: {
+					confirmButton: 'btn-regular py-2',
+				},
+			});
+			return;
+		}
+
 		MySwal.fire({
 			icon: 'warning',
 			title: 'Are you sure?',

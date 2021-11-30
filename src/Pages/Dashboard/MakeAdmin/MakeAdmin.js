@@ -25,57 +25,68 @@ const MakeAdmin = () => {
 
 	// process make admin
   const onSubmit = data => {
-		setProcessing(true);
-		// return if email not registered
-		const isRegisteredEmail = users.find(user => user.email === data.email);
-		if (!isRegisteredEmail) {
-			setProcessing(false);
-			MySwal.fire({
-				icon: 'warning',
-				title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Not allowed!</span>`,
-				html: `<p class="text-sm"><span class="font-semibold">${data.email}</span> is not registered yet. Email must be registered before adding Admin role.</p>`,
-				confirmButtonText: `OK`,
-				buttonsStyling: false,
-				customClass: {
-					confirmButton: 'btn-regular py-2',
-				},
-			});
-			return;
-		}
+		// setProcessing(true);
+		// // return if email not registered
+		// const isRegisteredEmail = users.find(user => user.email === data.email);
+		// if (!isRegisteredEmail) {
+		// 	setProcessing(false);
+		// 	MySwal.fire({
+		// 		icon: 'warning',
+		// 		title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Not allowed!</span>`,
+		// 		html: `<p class="text-sm"><span class="font-semibold">${data.email}</span> is not registered yet. Email must be registered before adding Admin role.</p>`,
+		// 		confirmButtonText: `OK`,
+		// 		buttonsStyling: false,
+		// 		customClass: {
+		// 			confirmButton: 'btn-regular py-2',
+		// 		},
+		// 	});
+		// 	return;
+		// }
 
 		// set admin role in database
-		const url = `https://sheltered-caverns-44637.herokuapp.com/users/admin`;
-		axios
-			.put(url, data)
-			.then(res => {
-				if (res.data.modifiedCount) {
-					MySwal.fire({
-						icon: 'success',
-						title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Successful!</span>`,
-						html: `<p class="text-sm"><span class="font-semibold">${data.email}</span> is now an ADMIN.</p>`,
-						confirmButtonText: `OK`,
-						buttonsStyling: false,
-						customClass: {
-							confirmButton: 'btn-regular py-2',
-						},
-					});
-					reset();
-				} 
-				else {
-					MySwal.fire({
-						icon: 'info',
-						title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Action not taken</span>`,
-						html: `<p class="text-sm"><span class="font-semibold">${data.email}</span> is already set as admin.</p>`,
-						confirmButtonText: `OK`,
-						buttonsStyling: false,
-						customClass: {
-							confirmButton: 'btn-regular py-2',
-						},
-					});
-				}
-			})
-			.catch(error => console.log(error))
-			.finally(() => setProcessing(false));
+		// const url = `https://sheltered-caverns-44637.herokuapp.com/users/admin`;
+		// axios
+		// 	.put(url, data)
+		// 	.then(res => {
+		// 		if (res.data.modifiedCount) {
+		// 			MySwal.fire({
+		// 				icon: 'success',
+		// 				title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Successful!</span>`,
+		// 				html: `<p class="text-sm"><span class="font-semibold">${data.email}</span> is now an ADMIN.</p>`,
+		// 				confirmButtonText: `OK`,
+		// 				buttonsStyling: false,
+		// 				customClass: {
+		// 					confirmButton: 'btn-regular py-2',
+		// 				},
+		// 			});
+		// 			reset();
+		// 		} 
+		// 		else {
+		// 			MySwal.fire({
+		// 				icon: 'info',
+		// 				title: `<span class="inline-block font-medium text-xl md:text-2xl tracking-normal md:tracking-normal leading-normal md:leading-normal">Action not taken</span>`,
+		// 				html: `<p class="text-sm"><span class="font-semibold">${data.email}</span> is already set as admin.</p>`,
+		// 				confirmButtonText: `OK`,
+		// 				buttonsStyling: false,
+		// 				customClass: {
+		// 					confirmButton: 'btn-regular py-2',
+		// 				},
+		// 			});
+		// 		}
+		// 	})
+		// 	.catch(error => console.log(error))
+		// 	.finally(() => setProcessing(false));
+
+		MySwal.fire({
+			icon: 'warning',
+			title: ``,
+			html: `<span class="inline-block font-medium text-sm">For security purpose make admin system is disabled currently.</span>`,
+			confirmButtonText: `OK`,
+			buttonsStyling: false,
+			customClass: {
+				confirmButton: 'btn-regular py-2',
+			},
+		});
 	};
 
 	return (

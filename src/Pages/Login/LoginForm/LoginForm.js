@@ -85,7 +85,7 @@ const LoginForm = () => {
 
 			<div className="hints text-my-sm leading-relaxed text-gray-400 mt-3">
 				<b>Hints:</b> Use "<span className="font-semibold">admin@admin.com</span>" and "
-				<span className="font-semibold tracking-wider">ASdf43!2</span>" to login as an Admin.
+				<span className="font-semibold tracking-wider">ASd@43!2</span>" to login as an Admin.
 			</div>
 
 			<div className="status">
