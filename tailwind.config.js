@@ -38,8 +38,8 @@ module.exports = {
         },
       },
       fontFamily: {
-				'my-body': ['var(--font-body)'],
-        'my-title': ['var(--font-title)'],
+				'my-primary': ['var(--font-primary)'],
+        'my-secondary': ['var(--font-secondary)'],
       },
       maxWidth: {
         'clear': 'calc(100% - 2rem)',
