@@ -57,10 +57,6 @@
     @apply w-full h-12 px-4 rounded bg-white text-black text-sm border-b border-l focus:border-my-primary focus:outline-none;
   }
 
-  .contact-form-input[readonly] {
-    @apply bg-gray-100;
-  }
-
   .footer-text {
     @apply text-gray-300 text-my-sm leading-normal;
   }
@@ -72,6 +68,10 @@
   .form-field {
     @apply h-10 w-full border border-gray-300 px-3 py-1 text-sm text-gray-700;
   }
+}
+
+.contact-form-input[readonly] {
+  background-color: rgba(229, 231, 235, 1);
 }
 
 /* test colors */
