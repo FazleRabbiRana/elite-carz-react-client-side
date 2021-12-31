@@ -75,20 +75,14 @@
 }
 
 /* test colors */
-code a b {
-  /* color: #ffc803; */
-  /* color: #ffc905; */
+/* code a b {
   color: hsl(46, 100%, 63%);
   color: hsl(47, 100%, 51%);
   color: hsl(45, 100%, 50%);
-  /* color: hsl(42, 100%, 50%); */
   background-color: hsl(2, 85%, 76%);
   background-color: hsl(1, 79%, 66%);
   background-color: hsl(1, 91%, 60%);
-  /* background-color: hsl(15, 100%, 60%);
-  background-color: hsl(17, 100%, 51%);
-  background-color: hsl(17, 99%, 48%); */
   border-color: hsl(233, 100%, 64%);
   border-color: hsl(227, 100%, 51%);
   border-color: hsl(228, 100%, 48%);
-}
+} */

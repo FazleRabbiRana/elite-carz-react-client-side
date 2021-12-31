@@ -9,8 +9,12 @@ import Blogs from '../Blogs/Blogs';
 // import PopularBrands from '../PopularBrands/PopularBrands';
 import Products from '../Products/Products';
 import Reviews from '../Reviews/Reviews';
+import useAuthContexts from '../../../hooks/useAuthContexts';
+import LoadingStatus from '../../Shared/LoadingStatus/LoadingStatus';
 
 const Home = () => {
+	const { isLoading } = useAuthContexts();
+
 	return (
 		<>
 			<HeaderNavbar />
@@ -20,6 +24,7 @@ const Home = () => {
 			<Blogs />
 			{/* <PopularBrands /> */}
 			<Footer />
+			{isLoading && <LoadingStatus classes="fixed w-full h-full bg-white bg-opacity-90 flex items-center justify-center z-highest" />}
 		</>
 	);
 };

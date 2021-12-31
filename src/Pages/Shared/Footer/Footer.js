@@ -55,7 +55,7 @@ const Footer = () => {
 			<div className="container py-6 text-center">
 				<div className="copyright">
 					<p>
-						&#169; {currentYear} Elite Carz by <span className="text-my-secondary-light">Fazle Rabbi Rana</span>
+						&#169; {currentYear} Elite Carz by <a href='https://fullwebdev.com' target="_blank" rel="noreferrer noopener" className="text-my-secondary-light">Fazle Rabbi</a>
 					</p>
 				</div>
 			</div>
