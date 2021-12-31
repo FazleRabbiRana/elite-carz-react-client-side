@@ -12,6 +12,7 @@ const AllBlogs = () => {
 
 	// load all blogs
 	useEffect(() => {
+		setIsLoading(true);
 		axios
 			.get('https://sheltered-caverns-44637.herokuapp.com/blogs')
 			.then(res => {

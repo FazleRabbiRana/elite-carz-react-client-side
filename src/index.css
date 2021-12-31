@@ -19,8 +19,8 @@
     --clr-github: #171515;
     --clr-twitter: #00acee;
     --clr-facebook: #3b5998;
-    --font-primary: 'Open Sans', 'ui-sans-serif', 'sans-serif', 'system-ui';
-    --font-secondary: 'Saira Condensed', 'ui-sans-serif', 'sans-serif', 'system-ui';
+    --font-body: 'Open Sans', 'ui-sans-serif', 'sans-serif', 'system-ui';
+    --font-title: 'Saira Condensed', 'ui-sans-serif', 'sans-serif', 'system-ui';
   }
 
   *::selection {
@@ -29,16 +29,16 @@
   }
 
   body {
-    @apply text-true-gray-500 font-my-primary overflow-x-hidden;
+    @apply text-true-gray-500 font-my-body overflow-x-hidden;
     -webkit-tap-highlight-color: transparent;
   }
   
   h1, h2, h3, h4, h5, h6, label {
-    @apply font-my-secondary tracking-my-tiny font-medium text-true-gray-800;
+    @apply font-my-title tracking-my-tiny font-medium text-true-gray-800;
   }
 
   .btn-regular {
-    @apply inline-block cursor-pointer text-center uppercase py-3 px-6 font-my-secondary font-medium tracking-wide leading-none text-black bg-my-primary duration-300 hover:bg-my-primary-light;
+    @apply inline-block cursor-pointer text-center uppercase py-3 px-6 font-my-title font-medium tracking-wide leading-none text-black bg-my-primary duration-300 hover:bg-my-primary-light;
   }
 
   .btn-social-login {
@@ -50,7 +50,7 @@
   }
 
   .dashboard-menu-link {
-    @apply py-2 px-1 xl:px-3 w-full flex flex-nowrap items-center font-my-secondary uppercase font-medium text-true-gray-800 hover:bg-my-primary;
+    @apply py-2 px-1 xl:px-3 w-full flex flex-nowrap items-center font-my-title uppercase font-medium text-true-gray-800 hover:bg-my-primary;
   }
 
   .contact-form-input {
